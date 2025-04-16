@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - Toplist Vacations</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body class="bg-gray-100 font-sans">
+    <!-- Header with Navigation -->
+    <header class="bg-blue-50 shadow-md">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="https://via.placeholder.com/50" alt="Toplist Vacations Logo" class="h-10 w-10 rounded-full">
+                <nav class="ml-6">
+                    <ul class="flex space-x-6 text-gray-700">
+                        <li><a href="index.html" class="font-semibold hover:text-blue-600">HOMES</a></li>
+                        <li><a href="#" class="font-semibold hover:text-blue-600">RESORTS</a></li>
+                        <li><a href="management.html" class="font-semibold hover:text-blue-600">MANAGEMENT</a></li>
+                        <li><a href="#" class="font-semibold hover:text-blue-600 border-b-2 border-blue-600">SERVICES</a></li>
+                        <li><a href="contact.html" class="font-semibold hover:text-blue-600">CONTACT</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="flex space-x-2">
+                <button class="bg-gray-300 text-gray-700 px-6 py-1 rounded-full hover:bg-gray-400">GUEST</button>
+                <button class="bg-red-500 text-white px-6 py-1 rounded-full hover:bg-red-600">ADMIN</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Search Bar -->
+    <div class="container mx-auto px-4 py-8">
+        <div class="bg-white rounded-full overflow-hidden shadow-lg flex">
+            <button class="bg-blue-400 text-white py-3 px-6 font-semibold flex-1">All Resorts</button>
+            <button class="bg-blue-400 text-white py-3 px-6 font-semibold flex-1">Travel Dates</button>
+            <div class="bg-blue-200 py-3 px-6 font-semibold flex-1 flex items-center justify-between">
+                Options <i class="fas fa-chevron-down text-red-500"></i>
+            </div>
+            <button class="bg-white text-black py-3 px-6 font-semibold flex-1">Guests</button>
+            <button class="bg-white text-black py-3 px-6 font-semibold flex-1">House</button>
+            <button class="bg-red-500 text-white py-3 px-6 font-semibold flex-1">Search</button>
+        </div>
+    </div>
+
+    <!-- Services Flip Cards -->
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-3xl font-bold text-center text-gray-800 mb-12">Our Services</h1>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- BBQ Rental Card -->
+            <div class="flip-card mx-auto">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front bg-blue-100 p-8 rounded-lg flex flex-col items-center justify-center">
+                        <i class="fas fa-fire text-5xl text-blue-700 mb-4"></i>
+                        <h2 class="text-xl font-semibold text-blue-900">BBQ RENTAL</h2>
+                    </div>
+                    <div class="flip-card-back bg-blue-700 p-8 rounded-lg">
+                        <h2 class="text-xl font-semibold text-white mb-4">BBQ RENTAL</h2>
+                        <p class="text-white">Have a BBQ with your family and friends during your stay. Gas and clean-up included. *Available where offered; please tidy up after checkout</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pool Heat Card -->
+            <div class="flip-card mx-auto">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front bg-blue-100 p-8 rounded-lg flex flex-col items-center justify-center">
+                        <i class="fas fa-swimming-pool text-5xl text-blue-700 mb-4"></i>
+                        <h2 class="text-xl font-semibold text-blue-900">POOL HEAT</h2>
+                    </div>
+                    <div class="flip-card-back bg-blue-700 p-8 rounded-lg">
+                        <h2 class="text-xl font-semibold text-white mb-4">POOL HEAT</h2>
+                        <p class="text-white">Keep your private pool at a comfortable temperature throughout your stay. Recommended during winter months.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Baby Items Card -->
+            <div class="flip-card mx-auto">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front bg-blue-100 p-8 rounded-lg flex flex-col items-center justify-center">
+                        <i class="fas fa-baby text-5xl text-blue-700 mb-4"></i>
+                        <h2 class="text-xl font-semibold text-blue-900">BABY ITEMS</h2>
+                    </div>
+                    <div class="flip-card-back bg-blue-700 p-8 rounded-lg">
+                        <h2 class="text-xl font-semibold text-white mb-4">BABY ITEMS</h2>
+                        <p class="text-white">Travel lighter with our baby equipment rental: cribs, high chairs, strollers, and more. All items sanitized between guests.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Celebration Card -->
+            <div class="flip-card mx-auto">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front bg-blue-100 p-8 rounded-lg flex flex-col items-center justify-center">
+                        <i class="fas fa-glass-cheers text-5xl text-blue-700 mb-4"></i>
+                        <h2 class="text-xl font-semibold text-blue-900">CELEBRATION</h2>
+                    </div>
+                    <div class="flip-card-back bg-blue-700 p-8 rounded-lg">
+                        <h2 class="text-xl font-semibold text-white mb-4">CELEBRATION</h2>
+                        <p class="text-white">Make your special occasion memorable with our celebration packages including decorations, cakes, and more.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Service Description Section -->
+    <div class="container mx-auto px-4 py-12 bg-white rounded-lg shadow-md my-12">
+        <h2 class="text-2xl font-bold text-center text-gray-800 mb-8">Enhance Your Stay</h2>
+        <p class="text-gray-600 text-center max-w-3xl mx-auto mb-8">
+            At Toplist Vacations, we understand that the little details make a big difference in your vacation experience. 
+            Our array of additional services is designed to make your stay as comfortable and enjoyable as possible. 
+            From heating your private pool to providing essential baby equipment, we've got everything covered.
+        </p>
+        <div class="text-center">
+            <a href="contact.html" class="inline-block bg-blue-700 text-white py-3 px-8 rounded-lg font-semibold hover:bg-blue-800 transition">
+                Contact Us for More Information
+            </a>
+        </div>
+    </div>
+
+    <!-- WhatsApp Float Button -->
+    <div class="fixed bottom-6 right-6">
+        <a href="#" class="bg-green-500 text-white rounded-full h-14 w-14 flex items-center justify-center shadow-lg">
+            <i class="fab fa-whatsapp text-2xl"></i>
+        </a>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

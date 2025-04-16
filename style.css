@@ -1,0 +1,156 @@
+/* Base styles */
+:root {
+    --primary-blue: #3b4f6b;
+    --secondary-blue: #a5b3cb;
+    --primary-red: #e74c4c;
+    --light-gray: #e2e8f0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header Styles */
+header {
+    background-color: #ebf1fa;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.nav-link {
+    color: var(--primary-blue);
+    font-weight: 600;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    text-transform: uppercase;
+}
+
+.nav-link.active {
+    border-bottom: 2px solid var(--primary-blue);
+}
+
+/* Carousel Styles */
+.carousel-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* Fade Carousel Style */
+.carousel-slide.fade {
+    display: none;
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-slide.fade:first-child {
+    display: block;
+}
+
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+}
+
+/* Sliding Carousel Style */
+.carousel-slide.flex {
+    display: flex;
+    transition: transform 1s ease-in-out;
+    height: 100%;
+}
+
+.carousel-slide.flex img {
+    flex-shrink: 0;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Flip Card Styles */
+.flip-card {
+    background-color: transparent;
+    width: 250px;
+    height: 200px;
+    perspective: 1000px;
+    margin: 1rem auto;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.flip-card-front {
+    background-color: var(--secondary-blue);
+    color: var(--primary-blue);
+}
+
+.flip-card-back {
+    background-color: var(--primary-blue);
+    color: white;
+    transform: rotateY(180deg);
+    padding: 1rem;
+}
+
+/* Property Cards */
+.property-card {
+    background: var(--light-gray);
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.property-image {
+    height: 250px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.property-info {
+    padding: 1.5rem;
+}
+
+/* WhatsApp Button */
+.whatsapp-btn {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background-color: #25d366;
+    color: white;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    z-index: 1000;
+}
