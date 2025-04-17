@@ -7,6 +7,8 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 </head>
 <body class="bg-gray-100 font-sans">
     <!-- Header with Navigation -->
@@ -26,10 +28,54 @@
             </div>
             <div class="flex space-x-2">
                 <button class="bg-gray-300 text-gray-700 px-6 py-1 rounded-full hover:bg-gray-400">GUEST</button>
-                <button class="bg-red-500 text-white px-6 py-1 rounded-full hover:bg-red-600">ADMIN</button>
+                <button class="bg-red-400 text-white px-6 py-1 rounded-full hover:bg-red-500">ADMIN</button>
             </div>
         </div>
     </header>
+
+    <!-- Search Bar -->
+    <div class="container mx-auto px-4 py-8">
+        <div id="main-search-bar" class="bg-white rounded-full overflow-hidden shadow-lg flex">
+            <!-- Resort Selector with dropdown -->
+            <div class="search-bar-section resort-selector bg-blue-700 text-white py-3 px-6 font-semibold flex-1 relative">
+                <div class="dropdown-toggle flex items-center justify-between cursor-pointer w-full">
+                    <span id="selected-resort">All Resorts</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="resort-dropdown absolute top-full left-0 mt-1 bg-white text-gray-800 rounded-md shadow-lg z-10 w-full hidden">
+                    <div class="p-2 hover:bg-gray-100 cursor-pointer" data-value="all">All Resorts</div>
+                    <div class="p-2 hover:bg-gray-100 cursor-pointer" data-value="fantasy-world">Fantasy World Resort</div>
+                    <div class="p-2 hover:bg-gray-100 cursor-pointer" data-value="terra-verde">Terra Verde Resort</div>
+                    <div class="p-2 hover:bg-gray-100 cursor-pointer" data-value="solara">Solara Resort</div>
+                </div>
+            </div>
+            
+            <!-- Travel Dates with calendar -->
+            <div class="search-bar-section travel-dates bg-blue-700 text-white py-3 px-6 font-semibold flex-1 cursor-pointer">
+                <div id="date-range-toggle" class="flex items-center justify-between">
+                    <span>Travel Dates</span>
+                    <i class="fas fa-calendar ml-2"></i>
+                </div>
+                <input id="date-range-picker" type="text" class="date-range-input hidden" placeholder="Select dates...">
+            </div>
+            
+            <div class="search-bar-section options bg-blue-600 py-3 px-6 font-semibold flex-1 flex items-center justify-between">
+                Options <i class="fas fa-chevron-down text-red-400"></i>
+            </div>
+            
+            <!-- Guests input field -->
+            <div class="search-bar-section guests bg-white flex items-center px-6 font-semibold flex-1">
+                <input type="number" min="1" placeholder="Guests" class="w-full outline-none text-black bg-transparent">
+            </div>
+            
+            <!-- House name input field -->
+            <div class="search-bar-section house bg-white flex items-center px-6 font-semibold flex-1">
+                <input type="text" placeholder="House name" class="w-full outline-none text-black bg-transparent">
+            </div>
+            
+            <button class="search-bar-section search-btn bg-red-400 text-white py-3 px-6 font-semibold flex-1 hover:bg-red-500">Search</button>
+        </div>
+    </div>
 
     <!-- Resort Info Section -->
     <section class="container mx-auto px-4 py-8">
@@ -149,14 +195,22 @@
                 document.getElementById('resort-distance').textContent = '7 miles to Disney World';
                 document.getElementById('resort-image').src = 'https://via.placeholder.com/1200x600/225566';
                 document.getElementById('resort-description').innerHTML = 'Terra Verde Resort is a gated resort community featuring luxury vacation homes with access to a clubhouse, swimming pool, and sports facilities. The resort offers 24-hour security, making it a safe and relaxing environment for your vacation.<br><br>Located 7 miles from Disney World, Terra Verde is also convenient to other Orlando attractions, shopping, and dining options.';
-            } else if (resort === 'windsor-hills') {
-                document.getElementById('resort-name').textContent = 'Windsor Hills Resort';
+                
+                // Update the dropdown selection to match the current resort
+                document.getElementById('selected-resort').textContent = 'Terra Verde Resort';
+            } else if (resort === 'solara') {
+                document.getElementById('resort-name').textContent = 'Solara Resort';
                 document.getElementById('resort-location').textContent = 'Kissimmee, Florida';
-                document.getElementById('resort-distance').textContent = '2 miles to Disney World';
+                document.getElementById('resort-distance').textContent = '10 miles to Disney World';
                 document.getElementById('resort-image').src = 'https://via.placeholder.com/1200x600/557788';
-                document.getElementById('resort-description').innerHTML = 'Windsor Hills Resort is a prestigious gated community just 2 miles from Disney World. The resort features a lagoon-style pool with a water slide, splash area, and hot tub. Additional amenities include a clubhouse, fitness center, game room, and sports courts.<br><br>This resort offers some of the closest off-property accommodations to Disney World, making it perfect for families wanting to maximize their time at the parks.';
+                document.getElementById('resort-description').innerHTML = 'Solara Resort is a luxurious gated community offering exceptional vacation homes and world-class amenities. The resort features a spectacular water complex with a FlowRider surf simulator, splash pad, and heated pools. Other amenities include a state-of-the-art fitness center, sports courts, and a clubhouse with restaurant.<br><br>Located 10 miles from Disney World, Solara Resort provides a perfect balance of relaxation and convenience for your Orlando vacation.';
+                
+                // Update the dropdown selection to match the current resort
+                document.getElementById('selected-resort').textContent = 'Solara Resort';
+            } else if (resort === 'fantasy-world') {
+                // Update the dropdown selection to match the current resort
+                document.getElementById('selected-resort').textContent = 'Fantasy World Resort';
             }
-            // Default is Fantasy World Resort
         });
     </script>
 </body>

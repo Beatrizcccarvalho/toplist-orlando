@@ -2,7 +2,9 @@
 :root {
     --primary-blue: #3b4f6b;
     --secondary-blue: #a5b3cb;
-    --primary-red: #e74c4c;
+    --darker-blue: #2c4463;
+    --lighter-blue: #4b6e9e;
+    --primary-red: #f87171;  /* Softer red */
     --light-gray: #e2e8f0;
 }
 
@@ -18,6 +20,21 @@ header {
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
+.logo-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    transition: transform 0.2s ease;
+}
+
+.logo-link:hover {
+    transform: scale(1.05);
+}
+
+.logo-link img {
+    border: 2px solid var(--primary-blue);
+}
+
 .nav-link {
     color: var(--primary-blue);
     font-weight: 600;
@@ -28,6 +45,76 @@ header {
 
 .nav-link.active {
     border-bottom: 2px solid var(--primary-blue);
+}
+
+/* Search Bar Styles */
+.search-bar-section {
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+/* Override overflow for the main search bar container */
+#main-search-bar {
+    overflow: visible !important; 
+}
+
+.resort-selector, .travel-dates {
+    background-color: var(--darker-blue);
+    position: relative;
+}
+
+.options {
+    background-color: var(--lighter-blue);
+}
+
+.search-btn {
+    background-color: var(--primary-red);
+}
+
+.resort-dropdown {
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+
+.resort-dropdown.active {
+    max-height: 200px;
+    opacity: 1;
+    display: block;
+}
+
+/* Date picker styles */
+.date-range-input {
+    /* Keep hidden or manage visibility via JS if needed */
+    /* Example: visibility: hidden; height: 0; width: 0; position: absolute; */
+    /* The script now doesn't rely on this input being visible */
+}
+
+.flatpickr-calendar {
+    z-index: 9999 !important; /* Keep high z-index */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2) !important;
+    /* Removed forced display/opacity/visibility */
+    /* Flatpickr should manage these when opening/closing */
+}
+
+/* Position the calendar properly relative to toggle */
+.travel-dates {
+    position: relative !important; /* Needed if static: true is used */
+}
+
+/* Making sure the calendar days are visible */
+.flatpickr-day {
+    color: #333; /* Removed !important */
+    background-color: white;
+}
+
+.flatpickr-day.selected {
+    background-color: var(--darker-blue) !important; /* Keep important for theme override */
+    color: white !important;
+}
+
+.flatpickr-day.inRange {
+    background-color: var(--secondary-blue) !important; /* Keep important for theme override */
 }
 
 /* Carousel Styles */
@@ -70,6 +157,13 @@ header {
     flex-shrink: 0;
     height: 100%;
     object-fit: cover;
+}
+
+/* Hero Section */
+.hero-text {
+    font-weight: 400;
+    color: black;
+    text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.8);
 }
 
 /* Flip Card Styles */

@@ -7,6 +7,8 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 </head>
 <body class="bg-gray-100 font-sans">
     <!-- Header with Navigation -->
@@ -16,8 +18,8 @@
                 <img src="https://via.placeholder.com/50" alt="Toplist Vacations Logo" class="h-10 w-10 rounded-full">
                 <nav class="ml-6">
                     <ul class="flex space-x-6 text-gray-700">
-                        <li><a href="index.html" class="font-semibold hover:text-blue-600 border-b-2 border-blue-600">HOMES</a></li>
-                        <li><a href="#" class="font-semibold hover:text-blue-600">RESORTS</a></li>
+                        <li><a href="homes.html" class="font-semibold hover:text-blue-600 border-b-2 border-blue-600">HOMES</a></li>
+                        <li><a href="resorts.html" class="font-semibold hover:text-blue-600">RESORTS</a></li>
                         <li><a href="management.html" class="font-semibold hover:text-blue-600">MANAGEMENT</a></li>
                         <li><a href="services.html" class="font-semibold hover:text-blue-600">SERVICES</a></li>
                         <li><a href="contact.html" class="font-semibold hover:text-blue-600">CONTACT</a></li>
@@ -26,10 +28,54 @@
             </div>
             <div class="flex space-x-2">
                 <button class="bg-gray-300 text-gray-700 px-6 py-1 rounded-full hover:bg-gray-400">GUEST</button>
-                <button class="bg-red-500 text-white px-6 py-1 rounded-full hover:bg-red-600">ADMIN</button>
+                <button class="bg-red-400 text-white px-6 py-1 rounded-full hover:bg-red-500">ADMIN</button>
             </div>
         </div>
     </header>
+
+    <!-- Search Bar -->
+    <div class="container mx-auto px-4 py-8">
+        <div id="main-search-bar" class="bg-white rounded-full overflow-hidden shadow-lg flex">
+            <!-- Resort Selector with dropdown -->
+            <div class="search-bar-section resort-selector bg-blue-700 text-white py-3 px-6 font-semibold flex-1 relative">
+                <div class="dropdown-toggle flex items-center justify-between cursor-pointer w-full">
+                    <span id="selected-resort">All Resorts</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="resort-dropdown absolute top-full left-0 mt-1 bg-white text-gray-800 rounded-md shadow-lg z-10 w-full hidden">
+                    <div class="p-2 hover:bg-gray-100 cursor-pointer" data-value="all">All Resorts</div>
+                    <div class="p-2 hover:bg-gray-100 cursor-pointer" data-value="fantasy-world">Fantasy World Resort</div>
+                    <div class="p-2 hover:bg-gray-100 cursor-pointer" data-value="terra-verde">Terra Verde Resort</div>
+                    <div class="p-2 hover:bg-gray-100 cursor-pointer" data-value="solara">Solara Resort</div>
+                </div>
+            </div>
+            
+            <!-- Travel Dates with calendar -->
+            <div class="search-bar-section travel-dates bg-blue-700 text-white py-3 px-6 font-semibold flex-1 cursor-pointer">
+                <div id="date-range-toggle" class="flex items-center justify-between">
+                    <span>Travel Dates</span>
+                    <i class="fas fa-calendar ml-2"></i>
+                </div>
+                <input id="date-range-picker" type="text" class="date-range-input hidden" placeholder="Select dates...">
+            </div>
+            
+            <div class="search-bar-section options bg-blue-600 py-3 px-6 font-semibold flex-1 flex items-center justify-between">
+                Options <i class="fas fa-chevron-down text-red-400"></i>
+            </div>
+            
+            <!-- Guests input field -->
+            <div class="search-bar-section guests bg-white flex items-center px-6 font-semibold flex-1">
+                <input type="number" min="1" placeholder="Guests" class="w-full outline-none text-black bg-transparent">
+            </div>
+            
+            <!-- House name input field -->
+            <div class="search-bar-section house bg-white flex items-center px-6 font-semibold flex-1">
+                <input type="text" placeholder="House name" class="w-full outline-none text-black bg-transparent">
+            </div>
+            
+            <button class="search-bar-section search-btn bg-red-400 text-white py-3 px-6 font-semibold flex-1 hover:bg-red-500">Search</button>
+        </div>
+    </div>
 
     <!-- Property Details Main Content -->
     <div class="container mx-auto px-4 py-8">
