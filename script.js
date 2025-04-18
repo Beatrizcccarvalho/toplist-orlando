@@ -241,4 +241,100 @@ document.addEventListener('DOMContentLoaded', function() {
             this.querySelector('.flip-card-inner').style.transform = 'rotateY(0deg)';
         });
     });
+
+    // Resort dropdown toggle
+    const resortToggle = document.querySelector('.resort-selector .dropdown-toggle');
+    const resortDropdown = document.querySelector('.resort-dropdown');
+    
+    if (resortToggle && resortDropdown) {
+        resortToggle.addEventListener('click', function() {
+            resortDropdown.classList.toggle('hidden');
+            resortDropdown.classList.toggle('active');
+        });
+        
+        // Close the dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!resortToggle.contains(event.target) && !resortDropdown.contains(event.target)) {
+                resortDropdown.classList.add('hidden');
+                resortDropdown.classList.remove('active');
+            }
+        });
+        
+        // Resort selection
+        const resortOptions = document.querySelectorAll('.resort-dropdown div');
+        const selectedResort = document.getElementById('selected-resort');
+        
+        resortOptions.forEach(option => {
+            option.addEventListener('click', function() {
+                selectedResort.textContent = this.textContent;
+                resortDropdown.classList.add('hidden');
+                resortDropdown.classList.remove('active');
+            });
+        });
+    }
+    
+    // Date picker initialization
+    const dateRangePicker = document.getElementById('date-range-picker');
+    const dateRangeToggle = document.getElementById('date-range-toggle');
+    
+    if (dateRangePicker && dateRangeToggle) {
+        const fp = flatpickr(dateRangePicker, {
+            mode: "range",
+            minDate: "today",
+            dateFormat: "Y-m-d",
+            appendTo: document.querySelector('.travel-dates')
+        });
+        
+        dateRangeToggle.addEventListener('click', function() {
+            fp.toggle();
+        });
+    }
+
+    // Handle fixed header transparency when scrolling
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 100) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                const headerHeight = document.querySelector('header').offsetHeight;
+                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    // Set the home section to take the full viewport height
+    const adjustHomeHeight = () => {
+        const homeSection = document.getElementById('home');
+        if (homeSection) {
+            const headerHeight = document.querySelector('header').offsetHeight;
+            homeSection.style.height = `calc(100vh - ${headerHeight}px)`;
+            // Ensure the video fills the entire home section
+            const videoBackground = document.querySelector('.video-background');
+            if (videoBackground) {
+                videoBackground.style.height = '100vh';
+            }
+        }
+    };
+    
+    // Run on load and resize
+    adjustHomeHeight();
+    window.addEventListener('resize', adjustHomeHeight);
 });
