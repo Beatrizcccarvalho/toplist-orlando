@@ -137,8 +137,9 @@ function setupDatePicker() {
             minDate: 'today',
             dateFormat: 'Y-m-d',
             position: 'below',
-            appendTo: dateRangePickerContainer,
             allowInput: false,
+            static: false,
+            disableMobile: true,
             onClose: function(selectedDates, dateStr) {
                 if (selectedDates.length > 0) {
                     const startDate = new Date(selectedDates[0]);
@@ -158,6 +159,7 @@ function setupDatePicker() {
                 const calendarElem = instance.calendarContainer;
                 if (calendarElem) {
                     calendarElem.style.zIndex = "9999";
+                    document.body.appendChild(calendarElem);
                 }
             },
             onError: function(error) {

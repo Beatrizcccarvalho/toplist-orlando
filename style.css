@@ -56,11 +56,13 @@ header {
 /* Override overflow for the main search bar container */
 #main-search-bar {
     overflow: visible !important; 
+    z-index: 10;
 }
 
 .resort-selector, .travel-dates {
     background-color: var(--darker-blue);
     position: relative;
+    overflow: visible !important;
 }
 
 .options {
@@ -86,26 +88,36 @@ header {
 /* Date picker styles */
 .date-range-input {
     /* Keep hidden or manage visibility via JS if needed */
-    /* Example: visibility: hidden; height: 0; width: 0; position: absolute; */
-    /* The script now doesn't rely on this input being visible */
+    position: absolute;
+    visibility: hidden;
+    height: 0;
+    width: 0;
 }
 
 .flatpickr-calendar {
     z-index: 9999 !important; /* Keep high z-index */
     box-shadow: 0 4px 8px rgba(0,0,0,0.2) !important;
-    /* Removed forced display/opacity/visibility */
-    /* Flatpickr should manage these when opening/closing */
+    background: #fff !important;
+    border-radius: 5px !important;
+    margin-top: 4px !important;
 }
 
 /* Position the calendar properly relative to toggle */
 .travel-dates {
-    position: relative !important; /* Needed if static: true is used */
+    position: relative !important;
+    overflow: visible !important;
+}
+
+/* Ensure the search bar doesn't cover the calendar */
+#main-search-bar {
+    overflow: visible !important;
+    z-index: 10;
 }
 
 /* Making sure the calendar days are visible */
 .flatpickr-day {
-    color: #333; /* Removed !important */
-    background-color: white;
+    color: #333 !important;
+    background-color: white !important;
 }
 
 .flatpickr-day.selected {
@@ -115,6 +127,20 @@ header {
 
 .flatpickr-day.inRange {
     background-color: var(--secondary-blue) !important; /* Keep important for theme override */
+}
+
+.flatpickr-months {
+    background-color: var(--primary-blue) !important;
+    color: white !important;
+}
+
+.flatpickr-current-month,
+.flatpickr-monthDropdown-months,
+.flatpickr-month,
+.flatpickr-weekdays,
+.flatpickr-weekday {
+    color: white !important;
+    background-color: var(--primary-blue) !important;
 }
 
 /* Carousel Styles */
