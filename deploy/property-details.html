@@ -15,7 +15,7 @@
     <header class="bg-blue-50 shadow-md">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center">
-                <img src="https://via.placeholder.com/50" alt="Toplist Vacations Logo" class="h-10 w-10 rounded-full">
+                <img src="images/toplist-logo.png" alt="Toplist Vacations Logo" class="h-10">
                 <nav class="ml-6">
                     <ul class="flex space-x-6 text-gray-700">
                         <li><a href="homes.html" class="font-semibold hover:text-blue-600 border-b-2 border-blue-600">HOMES</a></li>
@@ -184,5 +184,27 @@
     </div>
 
     <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Parse URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const propertyName = urlParams.get('property');
+            
+            if (propertyName) {
+                // Update the property title
+                const propertyTitle = document.querySelector('h1');
+                if (propertyTitle) {
+                    propertyTitle.textContent = propertyName;
+                }
+                
+                // Update page title
+                document.title = propertyName + ' - Toplist Vacations';
+                
+                // You could load more details based on the property name
+                // This would typically come from a database, but for now we're just updating the UI
+                console.log('Property details loaded for:', propertyName);
+            }
+        });
+    </script>
 </body>
 </html>

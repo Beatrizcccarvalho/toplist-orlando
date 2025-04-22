@@ -183,15 +183,15 @@ function setupDatePicker() {
 
 // Implement smooth scrolling for anchor links
 function setupSmoothScrolling() {
-    // Select all navigation links in the header
-    const navLinks = document.querySelectorAll('header nav a');
+    // Select all navigation links that point to in-page sections (hash links)
+    const navLinks = document.querySelectorAll('a[href^="#"]');
     
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             const href = this.getAttribute('href');
             
             // Only apply smooth scrolling for hash links (links to sections within the page)
-            if (href && href.startsWith('#')) { // Check if href exists and starts with #
+            if (href && href.startsWith('#') && href.length > 1) { // Make sure it's not just "#"
                 e.preventDefault();
                 
                 // Get the target ID from the href attribute
@@ -211,11 +211,67 @@ function setupSmoothScrolling() {
                         top: targetPosition,
                         behavior: 'smooth'
                     });
+                    
+                    // Update URL hash without jumping
+                    history.pushState(null, null, href);
                 }
-            } 
-            // For normal page links (like guest.html or links on other pages), let the browser handle navigation naturally
+            }
+            // For normal page links (like guest.html), let the browser handle navigation naturally
         });
     });
+    
+    // Handle initial page load with hash in URL
+    if (window.location.hash) {
+        const targetId = window.location.hash.substring(1);
+        const targetElement = document.getElementById(targetId);
+        
+        if (targetElement) {
+            // Wait for page to fully load before scrolling
+            setTimeout(() => {
+                const header = document.querySelector('header');
+                const headerHeight = header ? header.offsetHeight : 0;
+                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }, 300);
+        }
+    }
+    
+    // Add active class to navigation links based on scroll position
+    function updateActiveNavLinks() {
+        // Get all sections
+        const sections = document.querySelectorAll('section[id]');
+        const scrollPosition = window.scrollY + 100; // Add offset to trigger earlier
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            const sectionId = section.getAttribute('id');
+            
+            // Check if we're in this section
+            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                // Remove active class from all nav links
+                document.querySelectorAll('nav a').forEach(link => {
+                    link.classList.remove('active');
+                });
+                
+                // Add active class to the corresponding nav link
+                const activeLink = document.querySelector(`nav a[href="#${sectionId}"]`);
+                if (activeLink) {
+                    activeLink.classList.add('active');
+                }
+            }
+        });
+    }
+    
+    // Update active links on scroll
+    window.addEventListener('scroll', updateActiveNavLinks);
+    
+    // Initial update
+    updateActiveNavLinks();
 }
 
 // Function to handle service card interactions
@@ -248,160 +304,253 @@ function setupExtrasCarousel() {
     const prevButton = carousel.querySelector('button:first-of-type');
     const nextButton = carousel.querySelector('button:last-of-type');
     
-    if (!itemsContainer || !items.length || !prevButton || !nextButton) return;
-    
-    let currentPosition = 0;
-    const itemWidth = 280; // Width + gap
-    const visibleItems = Math.floor(itemsContainer.offsetWidth / itemWidth);
-    const maxPosition = Math.max(0, items.length - visibleItems);
-    
-    // Update navigation button states
-    function updateNavButtons() {
-        prevButton.disabled = currentPosition <= 0;
-        prevButton.style.opacity = prevButton.disabled ? '0.5' : '1';
-        
-        nextButton.disabled = currentPosition >= maxPosition;
-        nextButton.style.opacity = nextButton.disabled ? '0.5' : '1';
+    if (!itemsContainer || items.length === 0 || !prevButton || !nextButton) {
+        console.warn('Could not find all required elements for the extras carousel.');
+        return;
     }
     
-    // Slide the carousel to the current position
+    let currentIndex = 0;
+    let maxIndex = Math.max(0, items.length - 3); // Show 3 items at once on large screens
+    
+    // Update button states
+    function updateNavButtons() {
+        prevButton.disabled = currentIndex === 0;
+        nextButton.disabled = currentIndex >= maxIndex;
+        
+        prevButton.classList.toggle('opacity-50', currentIndex === 0);
+        nextButton.classList.toggle('opacity-50', currentIndex >= maxIndex);
+    }
+    
+    // Move the carousel
     function slideCarousel() {
-        const offset = currentPosition * -itemWidth;
-        itemsContainer.style.transform = `translateX(${offset}px)`;
+        const itemWidth = items[0].offsetWidth + 32; // Width + gap
+        itemsContainer.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
         updateNavButtons();
     }
     
-    // Add event listeners to navigation buttons
-    prevButton.addEventListener('click', () => {
-        if (currentPosition > 0) {
-            currentPosition--;
-            slideCarousel();
-        }
-    });
-    
-    nextButton.addEventListener('click', () => {
-        if (currentPosition < maxPosition) {
-            currentPosition++;
-            slideCarousel();
-        }
-    });
-    
-    // Initialize the carousel
-    itemsContainer.style.transition = 'transform 0.5s ease';
+    // Initialize
     updateNavButtons();
     
-    // Handle window resize events
-    window.addEventListener('resize', () => {
-        const newVisibleItems = Math.floor(itemsContainer.offsetWidth / itemWidth);
-        const newMaxPosition = Math.max(0, items.length - newVisibleItems);
-        
-        // Adjust current position if needed
-        if (currentPosition > newMaxPosition) {
-            currentPosition = newMaxPosition;
+    // Add event listeners
+    prevButton.addEventListener('click', function() {
+        if (currentIndex > 0) {
+            currentIndex--;
             slideCarousel();
         }
-        
-        // Update max position
-        maxPosition = newMaxPosition;
-        updateNavButtons();
     });
+    
+    nextButton.addEventListener('click', function() {
+        if (currentIndex < maxIndex) {
+            currentIndex++;
+            slideCarousel();
+        }
+    });
+    
+    // Responsive handling
+    const updateCarouselLayout = () => {
+        // Adjust max index based on viewport width
+        if (window.innerWidth >= 1024) { // Large screens
+            maxIndex = Math.max(0, items.length - 3);
+        } else if (window.innerWidth >= 768) { // Medium screens
+            maxIndex = Math.max(0, items.length - 2);
+        } else { // Small screens
+            maxIndex = Math.max(0, items.length - 1);
+        }
+        
+        // Reset position if needed
+        if (currentIndex > maxIndex) {
+            currentIndex = maxIndex;
+        }
+        
+        slideCarousel();
+    };
+    
+    // Initial layout setup
+    updateCarouselLayout();
+    
+    // Update on resize
+    window.addEventListener('resize', updateCarouselLayout);
 }
 
-// Ensure window scrolls properly
-window.addEventListener('load', function() {
-    // Delay to ensure DOM is fully loaded
-    setTimeout(() => {
-        // Force a small scroll to activate the scrolling mechanism
-        window.scrollBy(0, 1);
-        window.scrollBy(0, -1);
-        
-        console.log('Window loaded, scroll reset');
-    }, 500);
-});
-
-// Main initialization
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOM fully loaded - initializing components');
-    
-    // Add WhatsApp button to all pages except homepage
-    const whatsappBtn = document.querySelector('.fixed.bottom-6.right-6');
-    if (whatsappBtn && window.location.pathname !== '/' && window.location.pathname !== '/index.html') {
-        whatsappBtn.classList.remove('hidden');
-    }
-    
-    // Initialize the appropriate carousel based on which elements exist
-    if (document.querySelector('.carousel-slide.fade')) {
-        showFadeSlides();
-    }
-    
-    if (document.querySelector('.carousel-slide.flex')) {
-        setupSlideCarousel();
-    }
-
-    // Initialize search bar components
-    setupResortDropdown();
-    
-    // Ensure flatpickr is loaded before initializing the date picker
-    if (typeof flatpickr === 'function') {
-        console.log('Flatpickr loaded, initializing date picker');
-        setupDatePicker();
-    } else {
-        console.error('Flatpickr not loaded yet, attempting to load dynamically or wait...');
-        // If flatpickr might load later, add a check
-        let attempts = 0;
-        const checkFlatpickr = setInterval(() => {
-            attempts++;
-            if (typeof flatpickr === 'function') {
-                console.log('Flatpickr loaded after delay, initializing date picker');
-                setupDatePicker();
-                clearInterval(checkFlatpickr);
-            } else if (attempts > 10) { // Stop checking after 5 seconds
-                console.error('Flatpickr failed to load after multiple attempts.');
-                clearInterval(checkFlatpickr);
-            }
-        }, 500);
-    }
-    
-    // Add hero-text class to the hero heading
-    const heroHeading = document.querySelector('.text-black.text-4xl.font-normal');
-    if (heroHeading) {
-        heroHeading.classList.add('hero-text');
-    }
-
-    // Handle fixed header transparency when scrolling
+// Function to make the fixed header transparent at top and solid on scroll
+function setupHeaderScroll() {
     const header = document.querySelector('header');
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 100) {
+    if (!header) return;
+    
+    const updateHeaderStyle = () => {
+        if (window.scrollY > 50) {
             header.classList.add('scrolled');
         } else {
             header.classList.remove('scrolled');
         }
-    });
-
-    // Set the home section to take the full viewport height
-    const adjustHomeHeight = () => {
-        const homeSection = document.getElementById('home');
-        if (homeSection) {
-            const headerHeight = document.querySelector('header').offsetHeight;
-            homeSection.style.height = `calc(100vh - ${headerHeight}px)`;
-            // Ensure the video fills the entire home section
-            const videoBackground = document.querySelector('.video-background');
-            if (videoBackground) {
-                videoBackground.style.height = '100vh';
-            }
-        }
     };
     
-    // Run on load and resize
+    // Initialize
+    updateHeaderStyle();
+    
+    // Update on scroll
+    window.addEventListener('scroll', updateHeaderStyle);
+}
+
+// Function to handle home section full height and responsive adjustments
+function setupHomeSection() {
+    const homeSection = document.getElementById('home');
+    if (!homeSection) return;
+    
+    const adjustHomeHeight = () => {
+        const windowHeight = window.innerHeight;
+        const headerHeight = document.querySelector('header')?.offsetHeight || 0;
+        
+        // Set home section height to full viewport minus header
+        homeSection.style.height = `${windowHeight}px`;
+        homeSection.style.minHeight = `${windowHeight}px`;
+    };
+    
+    // Initialize
     adjustHomeHeight();
+    
+    // Update on resize
     window.addEventListener('resize', adjustHomeHeight);
+}
 
-    // Initialize smooth scrolling
-    setupSmoothScrolling(); // Re-enabled smooth scrolling
+// Function to handle the Load More Properties button
+function setupLoadMoreProperties() {
+    const loadMoreBtn = document.getElementById('load-more-properties');
+    console.log('Load More Button:', loadMoreBtn); // Debug: check if button is found
+    
+    if (!loadMoreBtn) {
+        console.error('Load More Properties button not found!');
+        return { handleClick: function() { console.error('Button not found'); } };
+    }
 
-    // Setup service cards interaction
+    // Sample properties data for demonstration
+    const additionalProperties = [
+        {
+            image: 'images/properties/property-4.jpg',
+            title: '4 Bedrooms / 3 Baths / Solara Resort',
+            resort: 'Solara Resort • Entire home',
+            guests: '10 guests • 6 beds • 3 baths',
+            amenities: '<i class="fas fa-wifi"></i> <i class="fas fa-swimming-pool"></i>'
+        },
+        {
+            image: 'images/properties/property-5.jpg',
+            title: '3 Bedrooms / 2 Baths / Terra Verde',
+            resort: 'Terra Verde Resort • Townhouse',
+            guests: '8 guests • 5 beds • 2 baths',
+            amenities: '<i class="fas fa-wifi"></i> <i class="fas fa-dumbbell"></i>'
+        },
+        {
+            image: 'images/properties/property-6.jpg',
+            title: '5 Bedrooms / 4 Baths / Fantasy World',
+            resort: 'Fantasy World Resort • Entire home',
+            guests: '12 guests • 7 beds • 4 baths',
+            amenities: '<i class="fas fa-wifi"></i> <i class="fas fa-gamepad"></i>'
+        }
+    ];
+
+    let propertiesLoaded = false;
+
+    // Create a handleClick function that will be returned
+    function handleClick() {
+        console.log('Load More Button clicked!'); // Debug: confirm click event fired
+        if (propertiesLoaded) return;
+        
+        const propertiesContainer = document.querySelector('#all-properties .grid');
+        console.log('Properties Container:', propertiesContainer); // Debug: check if container is found
+        
+        if (!propertiesContainer) {
+            console.error('Properties container not found!');
+            return;
+        }
+
+        // Create and append new property cards
+        additionalProperties.forEach(property => {
+            const propertyCard = document.createElement('div');
+            propertyCard.className = 'bg-gray-200 rounded-lg overflow-hidden shadow-md flex flex-col h-full min-h-[450px]';
+            propertyCard.innerHTML = `
+                <div class="relative h-64">
+                    <img src="${property.image}" alt="${property.title}" class="w-full h-full object-cover">
+                </div>
+                <div class="p-6 flex flex-col flex-grow">
+                    <div class="text-gray-700 mb-2">${property.title}</div>
+                    <div class="text-gray-700 mb-2">${property.resort}</div>
+                    <div class="text-gray-700 mb-2">${property.guests}</div>
+                    <div class="text-gray-500 mb-4">${property.amenities}</div>
+                    <div class="mt-auto">
+                        <a href="property-details.html" class="bg-blue-900 text-white py-2 px-4 rounded-lg w-full block text-center view-details-btn">View Details</a>
+                    </div>
+                </div>
+            `;
+            propertiesContainer.appendChild(propertyCard);
+            console.log('Added property card:', property.title); // Debug: confirm card added
+        });
+
+        // Mark as loaded and update button text
+        propertiesLoaded = true;
+        loadMoreBtn.textContent = 'All Properties Loaded';
+        loadMoreBtn.classList.add('opacity-70');
+        
+        // Attach event listeners to new view details buttons
+        setupViewDetailsButtons();
+        console.log('Load more complete!'); // Debug: confirm function completed
+    }
+
+    // Add click event listener to the button
+    loadMoreBtn.onclick = handleClick;
+    loadMoreBtn.addEventListener('click', handleClick);
+    
+    console.log('Load More Properties button setup complete'); // Debug: confirm setup is complete
+    
+    // Return an object with methods that can be called from outside
+    return {
+        handleClick: handleClick
+    };
+}
+
+// Enhanced function to handle View Details buttons
+function setupViewDetailsButtons() {
+    const viewDetailsButtons = document.querySelectorAll('a[href="property-details.html"], a[href="#property-details"], .view-details-btn');
+    
+    viewDetailsButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Get property information from the parent card
+            const propertyCard = button.closest('.flex-col');
+            if (!propertyCard) return;
+            
+            // Get property title from the card
+            const propertyTitle = propertyCard.querySelector('.text-gray-700')?.textContent || 'Property Details';
+            
+            // Navigate to property details page with property info
+            window.location.href = 'property-details.html?property=' + encodeURIComponent(propertyTitle);
+        });
+    });
+}
+
+// Document Ready Function
+document.addEventListener('DOMContentLoaded', function() {
+    // Carousel functionality
+    showFadeSlides();
+    setupSlideCarousel();
+    
+    // Search bar components
+    setupResortDropdown();
+    setupDatePicker();
+    
+    // Navigation
+    setupSmoothScrolling();
+    setupHeaderScroll();
+    setupHomeSection();
+    
+    // Service cards
     setupServiceCards();
     
-    // Setup complimentary extras carousel
+    // Extras carousel
     setupExtrasCarousel();
+    
+    // Add the new functionality
+    setupLoadMoreProperties();
+    setupViewDetailsButtons();
 });
+

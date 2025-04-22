@@ -24,8 +24,7 @@
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center">
                 <a href="#home" class="flex items-center logo-link" title="Return to Homepage">
-                    <img src="images/logo.svg" alt="Toplist Vacations Logo" class="h-10 w-10 rounded-full">
-                    <span class="ml-2 font-semibold text-blue-800">Toplist Vacations</span>
+                    <img src="images/LogoToplist.svg" alt="Toplist Vacations Logo" class="h-16">
                 </a>
                 <nav class="ml-6">
                     <ul class="flex space-x-6 text-gray-700">
@@ -109,7 +108,7 @@
                 <!-- Property Card 1 -->
                 <div class="bg-gray-200 rounded-lg overflow-hidden shadow-md flex flex-col h-full min-h-[450px]">
                     <div class="relative h-64">
-                        <img src="images/properties/lake-berkley-house-1.jpg" alt="Lake Berkley Property" class="w-full h-full object-cover">
+                        <img src="images/properties/Lake Berkley /lake-berkley-house-1.jpg" alt="Lake Berkley Property" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6 flex flex-col flex-grow">
                         <div class="text-gray-700 mb-2">4 Bedrooms / 3 Baths / Lake Berkley</div>
@@ -125,7 +124,7 @@
                 <!-- Property Card 2 -->
                 <div class="bg-gray-200 rounded-lg overflow-hidden shadow-md flex flex-col h-full min-h-[450px]">
                     <div class="relative h-64">
-                        <img src="images/properties/terra-verde-exterior-3.jpg" alt="Terra Verde Property" class="w-full h-full object-cover">
+                        <img src="images/properties/Terra Verde/property-2.jpg" alt="Terra Verde Property" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6 flex flex-col flex-grow">
                         <div class="text-gray-700 mb-2">6 Bedrooms / 5.5 Baths / Terra Verde</div>
@@ -141,7 +140,7 @@
                 <!-- Property Card 3 -->
                 <div class="bg-gray-200 rounded-lg overflow-hidden shadow-md flex flex-col h-full min-h-[450px]">
                     <div class="relative h-64">
-                        <img src="images/properties/solara-property.jpg" alt="Solara Resort Property" class="w-full h-full object-cover">
+                        <img src="images/properties/Solara/Solara house.jpeg" alt="Solara Resort Property" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6 flex flex-col flex-grow">
                         <div class="text-gray-700 mb-2">4 Bedrooms / 3.5 Baths / Solara</div>
@@ -168,7 +167,7 @@
                 <!-- Property Card 1 -->
                 <div class="bg-gray-200 rounded-lg overflow-hidden shadow-md flex flex-col h-full min-h-[450px]">
                     <div class="relative h-64">
-                        <img src="images/properties/property-1.jpg" alt="Fantasy World Property" class="w-full h-full object-cover">
+                        <img src="images/properties/Fantasy/Fantasy Property.jpg" alt="Fantasy World Property" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6 flex flex-col flex-grow">
                         <div class="text-gray-700 mb-2">2 Bedrooms / 2 Baths / Fantasy World</div>
@@ -184,7 +183,7 @@
                 <!-- Property Card 2 -->
                 <div class="bg-gray-200 rounded-lg overflow-hidden shadow-md flex flex-col h-full min-h-[450px]">
                     <div class="relative h-64">
-                        <img src="images/properties/property-2.jpg" alt="Terra Verde Property" class="w-full h-full object-cover">
+                        <img src="images/properties/Terra Verde/property-2.jpg" alt="Terra Verde Property" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6 flex flex-col flex-grow">
                         <div class="text-gray-700 mb-2">6 Bedrooms / 5.5 Baths / Terra Verde</div>
@@ -200,12 +199,12 @@
                 <!-- Property Card 3 -->
                 <div class="bg-gray-200 rounded-lg overflow-hidden shadow-md flex flex-col h-full min-h-[450px]">
                     <div class="relative h-64">
-                        <img src="images/properties/property-3.jpg" alt="Fantasy World Property" class="w-full h-full object-cover">
+                        <img src="images/properties/Solara/Solara house.jpeg" alt="Solara Resort Property" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6 flex flex-col flex-grow">
-                        <div class="text-gray-700 mb-2">2 Bedrooms / 2 Baths / Fantasy World</div>
-                        <div class="text-gray-700 mb-2">Fantasy World Resort • Townhouse</div>
-                        <div class="text-gray-700 mb-2">6 guests • 3 beds • 2 baths</div>
+                        <div class="text-gray-700 mb-2">4 Bedrooms / 3.5 Baths / Solara</div>
+                        <div class="text-gray-700 mb-2">Solara Resort • Contemporary home</div>
+                        <div class="text-gray-700 mb-2">9 guests • 5 beds • 3.5 baths</div>
                         <div class="text-gray-500 mb-4"><i class="fas fa-wifi"></i></div>
                         <div class="mt-auto">
                             <a href="#property-details" class="bg-blue-900 text-white py-2 px-4 rounded-lg w-full block text-center">View Details</a>
@@ -214,7 +213,7 @@
                 </div>
             </div>
             <div class="text-center mt-8">
-                <button id="load-more-properties" class="bg-blue-900 text-white py-2 px-6 rounded-lg inline-block">Load More Properties</button>
+                <button id="load-more-properties" onclick="loadMoreProperties()" class="bg-blue-900 text-white py-2 px-6 rounded-lg inline-block">Load More Properties</button>
             </div>
         </div>
     </section>
@@ -227,7 +226,7 @@
                 <!-- Resort Card 1 -->
                 <div class="bg-gray-200 rounded-lg overflow-hidden shadow-md flex flex-col h-full min-h-[450px]">
                     <div class="relative h-64">
-                        <img src="images/resorts/fantasy-resort.jpg" alt="Fantasy World Resort" class="w-full h-full object-cover">
+                        <img src="images/resorts/Fantasy/fantasy-resort.jpg" alt="Fantasy World Resort" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6 flex flex-col flex-grow">
                         <h3 class="font-bold text-xl mb-2">Fantasy World Resort</h3>
@@ -239,7 +238,7 @@
                             <i class="fas fa-dumbbell"></i>
                         </div>
                         <div class="mt-auto">
-                            <a href="#all-properties" class="bg-blue-900 text-white py-2 px-4 rounded-lg w-full block text-center">View Homes</a>
+                            <a href="javascript:void(0);" onclick="window.viewHomesForResort('Fantasy World Resort')" class="bg-blue-900 text-white py-2 px-4 rounded-lg w-full block text-center">View Homes</a>
                         </div>
                     </div>
                 </div>
@@ -247,7 +246,7 @@
                 <!-- Resort Card 2 -->
                 <div class="bg-gray-200 rounded-lg overflow-hidden shadow-md flex flex-col h-full min-h-[450px]">
                     <div class="relative h-64">
-                        <img src="images/resorts/terra-verde-resort.jpg" alt="Terra Verde Resort" class="w-full h-full object-cover">
+                        <img src="images/resorts/Terra Verde/terra-verde-resort.jpg" alt="Terra Verde Resort" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6 flex flex-col flex-grow">
                         <h3 class="font-bold text-xl mb-2">Terra Verde Resort</h3>
@@ -259,7 +258,7 @@
                             <i class="fas fa-table-tennis"></i>
                         </div>
                         <div class="mt-auto">
-                            <a href="#all-properties" class="bg-blue-900 text-white py-2 px-4 rounded-lg w-full block text-center">View Homes</a>
+                            <a href="javascript:void(0);" onclick="window.viewHomesForResort('Terra Verde Resort')" class="bg-blue-900 text-white py-2 px-4 rounded-lg w-full block text-center">View Homes</a>
                         </div>
                     </div>
                 </div>
@@ -267,7 +266,7 @@
                 <!-- Resort Card 3 -->
                 <div class="bg-gray-200 rounded-lg overflow-hidden shadow-md flex flex-col h-full min-h-[450px]">
                     <div class="relative h-64">
-                        <img src="images/resorts/solara-resort.jpg" alt="Solara Resort" class="w-full h-full object-cover">
+                        <img src="images/resorts/Solara/solara-resort.jpg" alt="Solara Resort" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6 flex flex-col flex-grow">
                         <h3 class="font-bold text-xl mb-2">Solara Resort</h3>
@@ -279,13 +278,13 @@
                             <i class="fas fa-gamepad"></i>
                         </div>
                         <div class="mt-auto">
-                            <a href="#all-properties" class="bg-blue-900 text-white py-2 px-4 rounded-lg w-full block text-center">View Homes</a>
+                            <a href="javascript:void(0);" onclick="window.viewHomesForResort('Solara Resort')" class="bg-blue-900 text-white py-2 px-4 rounded-lg w-full block text-center">View Homes</a>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="text-center mt-8">
-                <a href="#resorts" class="bg-blue-900 text-white py-2 px-6 rounded-lg inline-block">Explore All Resorts</a>
+                <a href="javascript:void(0);" onclick="window.exploreAllResorts()" class="bg-blue-900 text-white py-2 px-6 rounded-lg inline-block">Explore All Resorts</a>
             </div>
         </div>
     </section>
@@ -481,5 +480,7 @@
     </div>
 
     <script src="script.js"></script>
+    <script src="navigation.js"></script>
+    <script src="properties.js"></script>
 </body>
 </html>
