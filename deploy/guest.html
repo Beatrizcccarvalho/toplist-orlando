@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guest Dashboard - Toplist Vacations</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body class="bg-gray-100 font-sans">
+    <!-- Header with Navigation -->
+    <header class="bg-blue-50 shadow-md">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <a href="index.html" class="flex items-center logo-link" title="Return to Homepage">
+                    <img src="images/logo.svg" alt="Toplist Vacations Logo" class="h-10 w-10 rounded-full">
+                    <span class="ml-2 font-semibold text-blue-800">Toplist Vacations</span>
+                </a>
+            </div>
+            <div class="flex space-x-2">
+                <span class="bg-gray-300 text-gray-700 px-6 py-1 rounded-full">GUEST</span>
+                <a href="admin.html" class="bg-red-400 text-white px-6 py-1 rounded-full hover:bg-red-500">ADM</a>
+                <a href="index.html" class="bg-blue-600 text-white px-6 py-1 rounded-full hover:bg-blue-700">HOME</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 pt-24 pb-12">
+        <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+            <h1 class="text-2xl font-bold text-blue-900 mb-4">Welcome to Your Guest Dashboard</h1>
+            <p class="text-gray-600 mb-4">Manage your reservations, view property details, and access important information for your stay.</p>
+        </div>
+
+        <!-- Dashboard Sections -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Upcoming Reservations -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-xl font-semibold text-blue-800 mb-4">
+                    <i class="fas fa-calendar-alt mr-2"></i>Your Reservations
+                </h2>
+                <div class="border-t pt-4">
+                    <div class="mb-4 p-3 bg-blue-50 rounded-lg">
+                        <p class="font-semibold">Terra Verde Villa</p>
+                        <p class="text-sm text-gray-600">August 15 - August 22, 2023</p>
+                        <p class="text-sm text-gray-600">Confirmation #: TV20230815</p>
+                        <a href="#" class="text-blue-600 text-sm hover:underline mt-2 inline-block">View Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Check-in Information -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-xl font-semibold text-blue-800 mb-4">
+                    <i class="fas fa-door-open mr-2"></i>Check-in Information
+                </h2>
+                <div class="border-t pt-4">
+                    <p class="mb-2"><span class="font-semibold">Check-in Date:</span> August 15, 2023</p>
+                    <p class="mb-2"><span class="font-semibold">Check-in Time:</span> After 4:00 PM</p>
+                    <p class="mb-2"><span class="font-semibold">Gate Code:</span> 1234</p>
+                    <p class="mb-2"><span class="font-semibold">Door Code:</span> 5678</p>
+                    <a href="#" class="text-blue-600 text-sm hover:underline mt-2 inline-block">Download Instructions</a>
+                </div>
+            </div>
+
+            <!-- Support & Requests -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-xl font-semibold text-blue-800 mb-4">
+                    <i class="fas fa-concierge-bell mr-2"></i>Support & Requests
+                </h2>
+                <div class="border-t pt-4">
+                    <a href="#" class="block p-3 bg-blue-50 rounded-lg mb-2 hover:bg-blue-100">
+                        <i class="fas fa-plus-circle mr-2 text-blue-600"></i>Request Additional Services
+                    </a>
+                    <a href="#" class="block p-3 bg-blue-50 rounded-lg mb-2 hover:bg-blue-100">
+                        <i class="fas fa-wrench mr-2 text-blue-600"></i>Report an Issue
+                    </a>
+                    <a href="#" class="block p-3 bg-blue-50 rounded-lg hover:bg-blue-100">
+                        <i class="fas fa-question-circle mr-2 text-blue-600"></i>Ask a Question
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-blue-900 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between">
+                <div class="mb-6 md:mb-0">
+                    <img src="images/logo.svg" alt="Toplist Vacations Logo" class="h-10 w-10 rounded-full">
+                    <p class="mt-2">Toplist Vacations</p>
+                    <p class="text-sm text-blue-200">Premium vacation rentals in Orlando</p>
+                </div>
+                <div>
+                    <h3 class="font-semibold mb-2">Contact Us</h3>
+                    <p class="text-sm">Phone: xxx xxx xxxx</p>
+                    <p class="text-sm">Email: info@toplistvacations.com</p>
+                </div>
+            </div>
+            <div class="mt-8 pt-4 border-t border-blue-800 text-sm text-center">
+                <p>&copy; 2023 Toplist Vacations. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 

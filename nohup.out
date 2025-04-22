@@ -1,0 +1,19 @@
+node:internal/errors:541
+      throw error;
+      ^
+
+TypeError [ERR_INVALID_ARG_TYPE]: The "paths[0]" argument must be of type string. Received type number (3000)
+    at Object.resolve (node:path:1101:7)
+    at createMiddleware (/Users/beatrizcasal/node_modules/http-server/lib/core/index.js:104:31)
+    at new HttpServer (/Users/beatrizcasal/node_modules/http-server/lib/http-server.js:128:15)
+    at exports.createServer (/Users/beatrizcasal/node_modules/http-server/lib/http-server.js:22:10)
+    at listen (/Users/beatrizcasal/node_modules/http-server/bin/http-server:198:27)
+    at /Users/beatrizcasal/node_modules/http-server/bin/http-server:132:5
+    at /Users/beatrizcasal/node_modules/portfinder/lib/portfinder.js:198:16
+    at wrapper (/Users/beatrizcasal/node_modules/async/dist/async.js:272:20)
+    at replenish (/Users/beatrizcasal/node_modules/async/dist/async.js:442:29)
+    at iterateeCallback (/Users/beatrizcasal/node_modules/async/dist/async.js:431:21) {
+  code: 'ERR_INVALID_ARG_TYPE'
+}
+
+Node.js v20.16.0
