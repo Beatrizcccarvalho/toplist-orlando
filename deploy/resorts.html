@@ -3,175 +3,271 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Toplist Vacations - Resorts</title>
+    <title>Our Resorts - Toplist Vacations</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 </head>
 <body class="bg-gray-100 font-sans">
     <!-- Header with Navigation -->
     <header class="bg-blue-50 shadow-md">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center">
-                <a href="index.html#home" class="flex items-center logo-link" title="Return to Homepage">
-                    <img src="images/logo.svg" alt="Toplist Vacations Logo" class="h-10 w-10 rounded-full">
-                    <span class="ml-2 font-semibold text-blue-800">Toplist Vacations</span>
+                <a href="index.html" class="flex items-center logo-link" title="Return to Homepage">
+                    <img src="images/LogoToplist.svg" alt="Toplist Vacations Logo" class="h-16">
                 </a>
-                <nav class="ml-6">
-                    <ul class="flex space-x-6 text-gray-700">
-                        <li><a href="index.html#properties" class="font-semibold hover:text-blue-600">HOMES</a></li>
-                        <li><a href="index.html#resorts" class="font-semibold hover:text-blue-600 border-b-2 border-blue-600">RESORTS</a></li>
-                        <li><a href="index.html#management" class="font-semibold hover:text-blue-600">MANAGEMENT</a></li>
-                        <li><a href="index.html#services" class="font-semibold hover:text-blue-600">SERVICES</a></li>
-                        <li><a href="index.html#contact" class="font-semibold hover:text-blue-600">CONTACT</a></li>
-                    </ul>
-                </nav>
             </div>
             <div class="flex space-x-2">
-                <button class="bg-gray-300 text-gray-700 px-6 py-1 rounded-full hover:bg-gray-400">GUEST</button>
-                <button class="bg-red-400 text-white px-6 py-1 rounded-full hover:bg-red-500">ADMIN</button>
+                <a href="guest.html" class="bg-gray-300 text-gray-700 px-6 py-1 rounded-full hover:bg-gray-400">GUEST</a>
+                <a href="admin.html" class="bg-red-400 text-white px-6 py-1 rounded-full hover:bg-red-500">ADM</a>
+                <a href="index.html" class="bg-blue-600 text-white px-6 py-1 rounded-full hover:bg-blue-700">HOME</a>
             </div>
         </div>
     </header>
 
-    <!-- Search Bar -->
-    <div class="container mx-auto px-4 py-8">
-        <div id="main-search-bar" class="bg-white rounded-full overflow-hidden shadow-lg flex">
-            <!-- Resort Selector with dropdown -->
-            <div class="search-bar-section resort-selector bg-blue-700 text-white py-3 px-6 font-semibold flex-1 relative">
-                <div class="dropdown-toggle flex items-center justify-between cursor-pointer w-full">
-                    <span id="selected-resort">All Resorts</span>
-                    <i class="fas fa-chevron-down"></i>
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-16">
+        <h1 class="text-3xl font-bold text-blue-900 mb-8 text-center">Our Premium Orlando Resorts</h1>
+        <p class="text-gray-600 max-w-4xl mx-auto mb-12 text-center">
+            Discover our collection of exclusive resorts in the Orlando area, each offering unique amenities and convenient access to major attractions. Whether you're planning a family vacation, a romantic getaway, or a group trip, our resorts provide the perfect setting for an unforgettable stay.
+        </p>
+        
+        <!-- Resorts Section -->
+        <div class="grid grid-cols-1 gap-16 mt-8">
+            <!-- Fantasy World Resort -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="md:flex">
+                    <div class="md:w-1/2">
+                        <img src="images/resorts/Fantasy/Fantasy Resort .jpg" alt="Fantasy World Resort" class="w-full h-96 object-cover">
+                    </div>
+                    <div class="md:w-1/2 p-8">
+                        <h2 class="text-2xl font-bold text-blue-900 mb-4">Fantasy World Resort</h2>
+                        <div class="flex items-center mb-4 text-yellow-500">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span class="ml-2 text-gray-600">(4.5/5 based on guest reviews)</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">
+                            Fantasy World Resort offers the ultimate family-friendly vacation experience with its renowned water park, lazy river, and multiple pools. Located just 3 miles from Disney World, this resort features spacious townhomes and villas perfect for families of all sizes.
+                        </p>
+                        <div class="mb-4">
+                            <h3 class="font-semibold text-blue-800 mb-2">Resort Amenities:</h3>
+                            <ul class="grid grid-cols-2 gap-2">
+                                <li class="flex items-center"><i class="fas fa-swimming-pool text-blue-500 mr-2"></i> Water Park</li>
+                                <li class="flex items-center"><i class="fas fa-wifi text-blue-500 mr-2"></i> Free Wi-Fi</li>
+                                <li class="flex items-center"><i class="fas fa-dumbbell text-blue-500 mr-2"></i> Fitness Center</li>
+                                <li class="flex items-center"><i class="fas fa-basketball-ball text-blue-500 mr-2"></i> Sports Courts</li>
+                                <li class="flex items-center"><i class="fas fa-concierge-bell text-blue-500 mr-2"></i> 24/7 Security</li>
+                                <li class="flex items-center"><i class="fas fa-shuttle-van text-blue-500 mr-2"></i> Theme Park Shuttle</li>
+                            </ul>
+                        </div>
+                        <div class="mt-6">
+                            <a href="index.html#all-properties" class="bg-blue-900 text-white py-2 px-6 rounded-lg inline-block hover:bg-blue-800 transition">View Available Properties</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="resort-dropdown absolute top-full left-0 mt-1 bg-white text-gray-800 rounded-md shadow-lg z-10 w-full hidden">
-                    <div class="p-2 hover:bg-gray-100 cursor-pointer" data-value="all">All Resorts</div>
-                    <div class="p-2 hover:bg-gray-100 cursor-pointer" data-value="fantasy-world">Fantasy World Resort</div>
-                    <div class="p-2 hover:bg-gray-100 cursor-pointer" data-value="terra-verde">Terra Verde Resort</div>
-                    <div class="p-2 hover:bg-gray-100 cursor-pointer" data-value="solara">Solara Resort</div>
+            </div>
+            
+            <!-- Terra Verde Resort -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="md:flex">
+                    <div class="md:w-1/2">
+                        <img src="images/resorts/Terra Verde/terra-verde-resort.jpg" alt="Terra Verde Resort" class="w-full h-96 object-cover">
+                    </div>
+                    <div class="md:w-1/2 p-8">
+                        <h2 class="text-2xl font-bold text-blue-900 mb-4">Terra Verde Resort</h2>
+                        <div class="flex items-center mb-4 text-yellow-500">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span class="ml-2 text-gray-600">(4.8/5 based on guest reviews)</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">
+                            Terra Verde is a gated resort community offering luxurious vacation homes in a serene setting. Located just 7 miles from Disney World, this resort features a large community pool, clubhouse, and beautifully landscaped grounds, providing a peaceful retreat after a day of adventure.
+                        </p>
+                        <div class="mb-4">
+                            <h3 class="font-semibold text-blue-800 mb-2">Resort Amenities:</h3>
+                            <ul class="grid grid-cols-2 gap-2">
+                                <li class="flex items-center"><i class="fas fa-swimming-pool text-blue-500 mr-2"></i> Community Pool</li>
+                                <li class="flex items-center"><i class="fas fa-wifi text-blue-500 mr-2"></i> Free Wi-Fi</li>
+                                <li class="flex items-center"><i class="fas fa-table-tennis text-blue-500 mr-2"></i> Game Room</li>
+                                <li class="flex items-center"><i class="fas fa-shield-alt text-blue-500 mr-2"></i> Gated Community</li>
+                                <li class="flex items-center"><i class="fas fa-child text-blue-500 mr-2"></i> Children's Play Area</li>
+                                <li class="flex items-center"><i class="fas fa-cocktail text-blue-500 mr-2"></i> Clubhouse Lounge</li>
+                            </ul>
+                        </div>
+                        <div class="mt-6">
+                            <a href="index.html#all-properties" class="bg-blue-900 text-white py-2 px-6 rounded-lg inline-block hover:bg-blue-800 transition">View Available Properties</a>
+                        </div>
+                    </div>
                 </div>
             </div>
             
-            <!-- Travel Dates with calendar -->
-            <div class="search-bar-section travel-dates bg-blue-700 text-white py-3 px-6 font-semibold flex-1 cursor-pointer">
-                <div id="date-range-toggle" class="flex items-center justify-between">
-                    <span>Travel Dates</span>
-                    <i class="fas fa-calendar ml-2"></i>
+            <!-- Solara Resort -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="md:flex">
+                    <div class="md:w-1/2">
+                        <img src="images/resorts/Solara/Solara Resort view.jpg" alt="Solara Resort" class="w-full h-96 object-cover">
+                    </div>
+                    <div class="md:w-1/2 p-8">
+                        <h2 class="text-2xl font-bold text-blue-900 mb-4">Solara Resort</h2>
+                        <div class="flex items-center mb-4 text-yellow-500">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span class="ml-2 text-gray-600">(4.7/5 based on guest reviews)</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">
+                            Solara Resort is a modern luxury destination featuring contemporary homes and state-of-the-art amenities. Located 10 miles from Disney World, this resort boasts impressive water features including water slides and a FlowRider® surf simulator, making it ideal for families seeking both relaxation and excitement.
+                        </p>
+                        <div class="mb-4">
+                            <h3 class="font-semibold text-blue-800 mb-2">Resort Amenities:</h3>
+                            <ul class="grid grid-cols-2 gap-2">
+                                <li class="flex items-center"><i class="fas fa-swimming-pool text-blue-500 mr-2"></i> Water Slides</li>
+                                <li class="flex items-center"><i class="fas fa-wifi text-blue-500 mr-2"></i> Free Wi-Fi</li>
+                                <li class="flex items-center"><i class="fas fa-gamepad text-blue-500 mr-2"></i> Teen Lounge</li>
+                                <li class="flex items-center"><i class="fas fa-utensils text-blue-500 mr-2"></i> Restaurant & Bar</li>
+                                <li class="flex items-center"><i class="fas fa-sun text-blue-500 mr-2"></i> Sunbathing Deck</li>
+                                <li class="flex items-center"><i class="fas fa-volleyball-ball text-blue-500 mr-2"></i> Beach Volleyball</li>
+                            </ul>
+                        </div>
+                        <div class="mt-6">
+                            <a href="index.html#all-properties" class="bg-blue-900 text-white py-2 px-6 rounded-lg inline-block hover:bg-blue-800 transition">View Available Properties</a>
+                        </div>
+                    </div>
                 </div>
-                <input id="date-range-picker" type="text" class="date-range-input hidden" placeholder="Select dates...">
             </div>
             
-            <div class="search-bar-section options bg-blue-600 py-3 px-6 font-semibold flex-1 flex items-center justify-between">
-                Options <i class="fas fa-chevron-down text-red-400"></i>
+            <!-- Lake Berkley Resort -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="md:flex">
+                    <div class="md:w-1/2">
+                        <img src="images/resorts/Lake Berkley/Lake Berkley Resort view 2.jpeg" alt="Lake Berkley Resort" class="w-full h-96 object-cover">
+                    </div>
+                    <div class="md:w-1/2 p-8">
+                        <h2 class="text-2xl font-bold text-blue-900 mb-4">Lake Berkley Resort</h2>
+                        <div class="flex items-center mb-4 text-yellow-500">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span class="ml-2 text-gray-600">(4.0/5 based on guest reviews)</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">
+                            Lake Berkley Resort offers a serene lakefront setting with panoramic water views and abundant wildlife. Located just 5 miles from Disney World, this gated community features lakeside walking paths, fishing docks, and a tranquil atmosphere that provides a perfect contrast to the excitement of Orlando's attractions.
+                        </p>
+                        <div class="mb-4">
+                            <h3 class="font-semibold text-blue-800 mb-2">Resort Amenities:</h3>
+                            <ul class="grid grid-cols-2 gap-2">
+                                <li class="flex items-center"><i class="fas fa-swimming-pool text-blue-500 mr-2"></i> Community Pool</li>
+                                <li class="flex items-center"><i class="fas fa-wifi text-blue-500 mr-2"></i> Free Wi-Fi</li>
+                                <li class="flex items-center"><i class="fas fa-fish text-blue-500 mr-2"></i> Fishing Dock</li>
+                                <li class="flex items-center"><i class="fas fa-hiking text-blue-500 mr-2"></i> Nature Trails</li>
+                                <li class="flex items-center"><i class="fas fa-shield-alt text-blue-500 mr-2"></i> Gated Community</li>
+                                <li class="flex items-center"><i class="fas fa-playground text-blue-500 mr-2"></i> Children's Playground</li>
+                            </ul>
+                        </div>
+                        <div class="mt-6">
+                            <a href="index.html#all-properties" class="bg-blue-900 text-white py-2 px-6 rounded-lg inline-block hover:bg-blue-800 transition">View Available Properties</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            
-            <!-- Guests input field -->
-            <div class="search-bar-section guests bg-white flex items-center px-6 font-semibold flex-1">
-                <input type="number" min="1" placeholder="Guests" class="w-full outline-none text-black bg-transparent">
-            </div>
-            
-            <!-- House name input field -->
-            <div class="search-bar-section house bg-white flex items-center px-6 font-semibold flex-1">
-                <input type="text" placeholder="House name" class="w-full outline-none text-black bg-transparent">
-            </div>
-            
-            <button class="search-bar-section search-btn bg-red-400 text-white py-3 px-6 font-semibold flex-1 hover:bg-red-500">Search</button>
         </div>
-    </div>
-
-    <!-- Available Resorts Section -->
-    <section class="container mx-auto px-4 py-8">
-        <h2 class="text-2xl font-semibold mb-8">Orlando Resorts</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Resort Card 1 -->
-            <div class="bg-gray-200 rounded-lg overflow-hidden shadow-md flex flex-col h-full min-h-[450px]">
-                <div class="relative h-64">
-                    <img src="images/resorts/resort-1.jpg" alt="Fantasy World Resort" class="w-full h-full object-cover">
-                </div>
-                <div class="p-6 flex flex-col flex-grow">
-                    <h3 class="font-bold text-xl mb-2">Fantasy World Resort</h3>
-                    <div class="text-gray-700 mb-2">Premium resort with water park</div>
-                    <div class="text-gray-700 mb-2">3 miles to Disney World</div>
-                    <div class="text-gray-500 mb-4">
-                        <i class="fas fa-swimming-pool mr-2"></i>
-                        <i class="fas fa-wifi mr-2"></i>
-                        <i class="fas fa-dumbbell"></i>
-                    </div>
-                    <div class="mt-auto">
-                        <a href="resorts-details.html?resort=fantasy-world" class="bg-blue-900 text-white py-2 px-4 rounded-lg w-full block text-center">View Homes</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Resort Card 2 -->
-            <div class="bg-gray-200 rounded-lg overflow-hidden shadow-md flex flex-col h-full min-h-[450px]">
-                <div class="relative h-64">
-                    <img src="images/resorts/resort-2.jpg" alt="Terra Verde Resort" class="w-full h-full object-cover">
-                </div>
-                <div class="p-6 flex flex-col flex-grow">
-                    <h3 class="font-bold text-xl mb-2">Terra Verde Resort</h3>
-                    <div class="text-gray-700 mb-2">Gated resort with large pool</div>
-                    <div class="text-gray-700 mb-2">7 miles to Disney World</div>
-                    <div class="text-gray-500 mb-4">
-                        <i class="fas fa-swimming-pool mr-2"></i>
-                        <i class="fas fa-wifi mr-2"></i>
-                        <i class="fas fa-table-tennis"></i>
-                    </div>
-                    <div class="mt-auto">
-                        <a href="resorts-details.html?resort=terra-verde" class="bg-blue-900 text-white py-2 px-4 rounded-lg w-full block text-center">View Homes</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Resort Card 3 -->
-            <div class="bg-gray-200 rounded-lg overflow-hidden shadow-md flex flex-col h-full min-h-[450px]">
-                <div class="relative h-64">
-                    <img src="images/resorts/resort-3.jpg" alt="Solara Resort" class="w-full h-full object-cover">
-                </div>
-                <div class="p-6 flex flex-col flex-grow">
-                    <h3 class="font-bold text-xl mb-2">Solara Resort</h3>
-                    <div class="text-gray-700 mb-2">Luxury resort with water slides</div>
-                    <div class="text-gray-700 mb-2">10 miles to Disney World</div>
-                    <div class="text-gray-500 mb-4">
-                        <i class="fas fa-swimming-pool mr-2"></i>
-                        <i class="fas fa-wifi mr-2"></i>
-                        <i class="fas fa-gamepad"></i>
-                    </div>
-                    <div class="mt-auto">
-                        <a href="resorts-details.html?resort=solara" class="bg-blue-900 text-white py-2 px-4 rounded-lg w-full block text-center">View Homes</a>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Resort Card 4 - Lake Berkley -->
-            <div class="bg-gray-200 rounded-lg overflow-hidden shadow-md flex flex-col h-full min-h-[450px]">
-                <div class="relative h-64">
-                    <img src="images/resorts/resort-4.jpg" alt="Lake Berkley Resort" class="w-full h-full object-cover">
-                </div>
-                <div class="p-6 flex flex-col flex-grow">
-                    <h3 class="font-bold text-xl mb-2">Lake Berkley Resort</h3>
-                    <div class="text-gray-700 mb-2">Lakefront resort with fishing dock</div>
-                    <div class="text-gray-700 mb-2">5 miles to Disney World</div>
-                    <div class="text-gray-500 mb-4">
-                        <i class="fas fa-swimming-pool mr-2"></i>
-                        <i class="fas fa-wifi mr-2"></i>
-                        <i class="fas fa-fish"></i>
-                    </div>
-                    <div class="mt-auto">
-                        <a href="resorts-details.html?resort=lake-berkley" class="bg-blue-900 text-white py-2 px-4 rounded-lg w-full block text-center">View Homes</a>
-                    </div>
-                </div>
+        
+        <!-- Resort Comparison Table -->
+        <div class="mt-16">
+            <h2 class="text-2xl font-bold text-blue-900 mb-6 text-center">Resort Comparison</h2>
+            <div class="overflow-x-auto bg-white rounded-lg shadow-md">
+                <table class="min-w-full">
+                    <thead>
+                        <tr>
+                            <th class="px-6 py-3 bg-blue-800 text-white text-left">Resort</th>
+                            <th class="px-6 py-3 bg-blue-800 text-white text-center">Distance to Disney</th>
+                            <th class="px-6 py-3 bg-blue-800 text-white text-center">Pool</th>
+                            <th class="px-6 py-3 bg-blue-800 text-white text-center">Gated</th>
+                            <th class="px-6 py-3 bg-blue-800 text-white text-center">Fitness Center</th>
+                            <th class="px-6 py-3 bg-blue-800 text-white text-center">Shuttle Service</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b">
+                            <td class="px-6 py-4 font-medium">Fantasy World Resort</td>
+                            <td class="px-6 py-4 text-center">3 miles</td>
+                            <td class="px-6 py-4 text-center text-green-600"><i class="fas fa-check"></i> Water Park</td>
+                            <td class="px-6 py-4 text-center text-green-600"><i class="fas fa-check"></i></td>
+                            <td class="px-6 py-4 text-center text-green-600"><i class="fas fa-check"></i></td>
+                            <td class="px-6 py-4 text-center text-green-600"><i class="fas fa-check"></i></td>
+                        </tr>
+                        <tr class="border-b bg-gray-50">
+                            <td class="px-6 py-4 font-medium">Terra Verde Resort</td>
+                            <td class="px-6 py-4 text-center">7 miles</td>
+                            <td class="px-6 py-4 text-center text-green-600"><i class="fas fa-check"></i> Community</td>
+                            <td class="px-6 py-4 text-center text-green-600"><i class="fas fa-check"></i></td>
+                            <td class="px-6 py-4 text-center text-red-600"><i class="fas fa-times"></i></td>
+                            <td class="px-6 py-4 text-center text-red-600"><i class="fas fa-times"></i></td>
+                        </tr>
+                        <tr class="border-b">
+                            <td class="px-6 py-4 font-medium">Solara Resort</td>
+                            <td class="px-6 py-4 text-center">10 miles</td>
+                            <td class="px-6 py-4 text-center text-green-600"><i class="fas fa-check"></i> Water Slides</td>
+                            <td class="px-6 py-4 text-center text-green-600"><i class="fas fa-check"></i></td>
+                            <td class="px-6 py-4 text-center text-green-600"><i class="fas fa-check"></i></td>
+                            <td class="px-6 py-4 text-center text-red-600"><i class="fas fa-times"></i></td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="px-6 py-4 font-medium">Lake Berkley Resort</td>
+                            <td class="px-6 py-4 text-center">5 miles</td>
+                            <td class="px-6 py-4 text-center text-green-600"><i class="fas fa-check"></i> Lakefront</td>
+                            <td class="px-6 py-4 text-center text-green-600"><i class="fas fa-check"></i></td>
+                            <td class="px-6 py-4 text-center text-red-600"><i class="fas fa-times"></i></td>
+                            <td class="px-6 py-4 text-center text-red-600"><i class="fas fa-times"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
-    </section>
+        
+        <!-- Call to Action -->
+        <div class="mt-16 bg-blue-900 rounded-lg shadow-md p-8 text-center text-white">
+            <h2 class="text-2xl font-bold mb-4">Ready to book your perfect Orlando vacation?</h2>
+            <p class="mb-6 max-w-3xl mx-auto">
+                Browse our available properties and find the perfect accommodation for your next vacation. Our team is ready to help you select the best resort and property for your needs.
+            </p>
+            <div class="flex justify-center space-x-4">
+                <a href="index.html#all-properties" class="bg-red-500 hover:bg-red-600 text-white px-6 py-3 rounded-lg transition">View All Properties</a>
+                <a href="index.html#contact" class="bg-white hover:bg-gray-100 text-blue-900 px-6 py-3 rounded-lg transition">Contact Us</a>
+            </div>
+        </div>
+    </main>
 
-    <!-- WhatsApp Float Button -->
-    <div class="fixed bottom-6 right-6">
-        <a href="#" class="bg-green-500 text-white rounded-full h-14 w-14 flex items-center justify-center shadow-lg">
-            <i class="fab fa-whatsapp text-2xl"></i>
-        </a>
-    </div>
+    <!-- Footer -->
+    <footer class="bg-blue-900 text-white py-8 mt-16">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between">
+                <div class="mb-6 md:mb-0">
+                    <img src="images/LogoToplist.svg" alt="Toplist Vacations Logo" class="h-16">
+                    <p class="text-sm text-blue-200 mt-2">Premium vacation rentals in Orlando</p>
+                </div>
+                <div>
+                    <h3 class="font-semibold mb-2">Contact Us</h3>
+                    <p class="text-sm">Phone: xxx xxx xxxx</p>
+                    <p class="text-sm">Email: info@toplistvacations.com</p>
+                </div>
+            </div>
+            <div class="mt-8 pt-4 border-t border-blue-800 text-sm text-center">
+                <p>&copy; 2023 Toplist Vacations. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>

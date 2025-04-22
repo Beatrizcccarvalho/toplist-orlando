@@ -56,12 +56,12 @@
 
         <!-- Search Bar -->
         <div class="container mx-auto px-4 py-8 relative z-10 mt-24">
-            <div id="main-search-bar" class="bg-white rounded-full overflow-hidden shadow-lg flex">
+            <div id="main-search-bar" class="bg-white rounded-lg overflow-hidden shadow-lg flex items-center">
                 <!-- Resort Selector with dropdown -->
-                <div class="search-bar-section resort-selector bg-blue-700 text-white py-3 px-6 font-semibold flex-1 relative">
+                <div class="search-bar-section resort-selector bg-blue-700 text-white py-4 px-6 font-semibold flex-1 relative h-14 flex items-center">
                     <div class="dropdown-toggle flex items-center justify-between cursor-pointer w-full">
                         <span id="selected-resort">All Resorts</span>
-                        <i class="fas fa-chevron-down"></i>
+                        <i class="fas fa-chevron-down ml-2"></i>
                     </div>
                     <div class="resort-dropdown absolute top-full left-0 mt-1 bg-white text-gray-800 rounded-md shadow-lg z-10 w-full hidden">
                         <div class="p-2 hover:bg-gray-100 cursor-pointer" data-value="all">All Resorts</div>
@@ -73,29 +73,32 @@
                 </div>
                 
                 <!-- Travel Dates with calendar -->
-                <div class="search-bar-section travel-dates bg-blue-700 text-white py-3 px-6 font-semibold flex-1 cursor-pointer">
-                    <div id="date-range-toggle" class="flex items-center justify-between">
+                <div class="search-bar-section travel-dates bg-blue-700 text-white py-4 px-6 font-semibold flex-1 cursor-pointer h-14 flex items-center">
+                    <div id="date-range-toggle" class="flex items-center justify-between w-full">
                         <span>Travel Dates</span>
                         <i class="fas fa-calendar ml-2"></i>
                     </div>
                     <input id="date-range-picker" type="text" class="date-range-input hidden" placeholder="Select dates...">
                 </div>
                 
-                <div class="search-bar-section options bg-blue-600 py-3 px-6 font-semibold flex-1 flex items-center justify-between">
-                    Options <i class="fas fa-chevron-down text-red-400"></i>
+                <div class="search-bar-section options bg-blue-600 py-4 px-6 font-semibold flex-1 flex items-center justify-between h-14">
+                    <span>Options</span>
+                    <i class="fas fa-chevron-down text-red-400 ml-2"></i>
                 </div>
                 
                 <!-- Guests input field -->
-                <div class="search-bar-section guests bg-white flex items-center px-6 font-semibold flex-1">
+                <div class="search-bar-section guests bg-white flex items-center px-6 font-semibold flex-1 h-14">
                     <input type="number" min="1" placeholder="Guests" class="w-full outline-none text-black bg-transparent">
                 </div>
                 
                 <!-- House name input field -->
-                <div class="search-bar-section house bg-white flex items-center px-6 font-semibold flex-1">
+                <div class="search-bar-section house bg-white flex items-center px-6 font-semibold flex-1 h-14">
                     <input type="text" placeholder="House name" class="w-full outline-none text-black bg-transparent">
                 </div>
                 
-                <button class="search-bar-section search-btn bg-red-400 text-white py-3 px-6 font-semibold flex-1 hover:bg-red-500">Search</button>
+                <button class="search-bar-section search-btn bg-red-400 text-white py-4 px-8 font-semibold h-14 hover:bg-red-500 flex items-center justify-center">
+                    Search
+                </button>
             </div>
         </div>
     </section>
@@ -116,7 +119,7 @@
                         <div class="text-gray-700 mb-2">8 guests • 5 beds • 3 baths</div>
                         <div class="text-gray-500 mb-4"><i class="fas fa-wifi"></i> <i class="fas fa-swimming-pool ml-2"></i></div>
                         <div class="mt-auto">
-                            <a href="property-details.html" class="bg-blue-900 text-white py-2 px-4 rounded-lg w-full block text-center">View Details</a>
+                            <a href="#" onclick="showPropertyDetails('lake-berkley')" class="bg-blue-900 text-white py-2 px-4 rounded-lg w-full block text-center">View Details</a>
                         </div>
                     </div>
                 </div>
@@ -132,7 +135,7 @@
                         <div class="text-gray-700 mb-2">16 guests • 9 beds • 2 baths</div>
                         <div class="text-gray-500 mb-4"><i class="fas fa-wifi"></i> <i class="fas fa-hot-tub ml-2"></i></div>
                         <div class="mt-auto">
-                            <a href="property-details.html" class="bg-blue-900 text-white py-2 px-4 rounded-lg w-full block text-center">View Details</a>
+                            <a href="#" onclick="showPropertyDetails('terra-verde')" class="bg-blue-900 text-white py-2 px-4 rounded-lg w-full block text-center">View Details</a>
                         </div>
                     </div>
                 </div>
@@ -148,7 +151,7 @@
                         <div class="text-gray-700 mb-2">9 guests • 5 beds • 3.5 baths</div>
                         <div class="text-gray-500 mb-4"><i class="fas fa-wifi"></i> <i class="fas fa-gamepad ml-2"></i></div>
                         <div class="mt-auto">
-                            <a href="property-details.html" class="bg-blue-900 text-white py-2 px-4 rounded-lg w-full block text-center">View Details</a>
+                            <a href="#" onclick="showPropertyDetails('solara')" class="bg-blue-900 text-white py-2 px-4 rounded-lg w-full block text-center">View Details</a>
                         </div>
                     </div>
                 </div>
@@ -175,7 +178,7 @@
                         <div class="text-gray-700 mb-2">6 guests • 4 beds • 2 baths</div>
                         <div class="text-gray-500 mb-4"><i class="fas fa-wifi"></i></div>
                         <div class="mt-auto">
-                            <a href="#property-details" class="bg-blue-900 text-white py-2 px-4 rounded-lg w-full block text-center">View Details</a>
+                            <a href="#" onclick="showPropertyDetails('fantasy')" class="bg-blue-900 text-white py-2 px-4 rounded-lg w-full block text-center">View Details</a>
                         </div>
                     </div>
                 </div>
@@ -191,7 +194,7 @@
                         <div class="text-gray-700 mb-2">16 guests • 9 beds • 2 baths</div>
                         <div class="text-gray-500 mb-4"><i class="fas fa-wifi"></i></div>
                         <div class="mt-auto">
-                            <a href="#property-details" class="bg-blue-900 text-white py-2 px-4 rounded-lg w-full block text-center">View Details</a>
+                            <a href="#" onclick="showPropertyDetails('terra-verde-2')" class="bg-blue-900 text-white py-2 px-4 rounded-lg w-full block text-center">View Details</a>
                         </div>
                     </div>
                 </div>
@@ -199,21 +202,21 @@
                 <!-- Property Card 3 -->
                 <div class="bg-gray-200 rounded-lg overflow-hidden shadow-md flex flex-col h-full min-h-[450px]">
                     <div class="relative h-64">
-                        <img src="images/properties/Solara/Solara house.jpeg" alt="Solara Resort Property" class="w-full h-full object-cover">
+                        <img src="images/properties/Lake Berkley /lake-berkley-house-1.jpg" alt="Lake Berkley Property" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6 flex flex-col flex-grow">
-                        <div class="text-gray-700 mb-2">4 Bedrooms / 3.5 Baths / Solara</div>
-                        <div class="text-gray-700 mb-2">Solara Resort • Contemporary home</div>
-                        <div class="text-gray-700 mb-2">9 guests • 5 beds • 3.5 baths</div>
+                        <div class="text-gray-700 mb-2">4 Bedrooms / 3 Baths / Lake Berkley</div>
+                        <div class="text-gray-700 mb-2">Lake Berkley Resort • Pool home</div>
+                        <div class="text-gray-700 mb-2">8 guests • 5 beds • 3 baths</div>
                         <div class="text-gray-500 mb-4"><i class="fas fa-wifi"></i></div>
                         <div class="mt-auto">
-                            <a href="#property-details" class="bg-blue-900 text-white py-2 px-4 rounded-lg w-full block text-center">View Details</a>
+                            <a href="#" onclick="showPropertyDetails('lake-berkley-2')" class="bg-blue-900 text-white py-2 px-4 rounded-lg w-full block text-center">View Details</a>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="text-center mt-8">
-                <button id="load-more-properties" onclick="loadMoreProperties()" class="bg-blue-900 text-white py-2 px-6 rounded-lg inline-block">Load More Properties</button>
+                <button id="load-more-properties" class="bg-blue-900 text-white py-2 px-6 rounded-lg inline-block">Load More Properties</button>
             </div>
         </div>
     </section>
@@ -222,11 +225,11 @@
     <section id="resorts" class="bg-gray-100 py-16">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-semibold mb-10 text-center">Our Resorts</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <!-- Resort Card 1 -->
                 <div class="bg-gray-200 rounded-lg overflow-hidden shadow-md flex flex-col h-full min-h-[450px]">
                     <div class="relative h-64">
-                        <img src="images/resorts/Fantasy/fantasy-resort.jpg" alt="Fantasy World Resort" class="w-full h-full object-cover">
+                        <img src="images/resorts/Fantasy/Fantasy Resort .jpg" alt="Fantasy World Resort" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6 flex flex-col flex-grow">
                         <h3 class="font-bold text-xl mb-2">Fantasy World Resort</h3>
@@ -238,7 +241,7 @@
                             <i class="fas fa-dumbbell"></i>
                         </div>
                         <div class="mt-auto">
-                            <a href="javascript:void(0);" onclick="window.viewHomesForResort('Fantasy World Resort')" class="bg-blue-900 text-white py-2 px-4 rounded-lg w-full block text-center">View Homes</a>
+                            <a href="#all-properties" class="bg-blue-900 text-white py-2 px-4 rounded-lg w-full block text-center">View Homes</a>
                         </div>
                     </div>
                 </div>
@@ -258,7 +261,7 @@
                             <i class="fas fa-table-tennis"></i>
                         </div>
                         <div class="mt-auto">
-                            <a href="javascript:void(0);" onclick="window.viewHomesForResort('Terra Verde Resort')" class="bg-blue-900 text-white py-2 px-4 rounded-lg w-full block text-center">View Homes</a>
+                            <a href="#all-properties" class="bg-blue-900 text-white py-2 px-4 rounded-lg w-full block text-center">View Homes</a>
                         </div>
                     </div>
                 </div>
@@ -266,7 +269,7 @@
                 <!-- Resort Card 3 -->
                 <div class="bg-gray-200 rounded-lg overflow-hidden shadow-md flex flex-col h-full min-h-[450px]">
                     <div class="relative h-64">
-                        <img src="images/resorts/Solara/solara-resort.jpg" alt="Solara Resort" class="w-full h-full object-cover">
+                        <img src="images/resorts/Solara/Solara Resort view.jpg" alt="Solara Resort" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6 flex flex-col flex-grow">
                         <h3 class="font-bold text-xl mb-2">Solara Resort</h3>
@@ -278,13 +281,33 @@
                             <i class="fas fa-gamepad"></i>
                         </div>
                         <div class="mt-auto">
-                            <a href="javascript:void(0);" onclick="window.viewHomesForResort('Solara Resort')" class="bg-blue-900 text-white py-2 px-4 rounded-lg w-full block text-center">View Homes</a>
+                            <a href="#all-properties" class="bg-blue-900 text-white py-2 px-4 rounded-lg w-full block text-center">View Homes</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Resort Card 4 - Lake Berkley -->
+                <div class="bg-gray-200 rounded-lg overflow-hidden shadow-md flex flex-col h-full min-h-[450px]">
+                    <div class="relative h-64">
+                        <img src="images/resorts/Lake Berkley/Lake Berkley Resort view 2.jpeg" alt="Lake Berkley Resort" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="font-bold text-xl mb-2">Lake Berkley Resort</h3>
+                        <div class="text-gray-700 mb-2">Lakefront resort with scenic views</div>
+                        <div class="text-gray-700 mb-2">5 miles to Disney World</div>
+                        <div class="text-gray-500 mb-4">
+                            <i class="fas fa-swimming-pool mr-2"></i>
+                            <i class="fas fa-wifi mr-2"></i>
+                            <i class="fas fa-fish"></i>
+                        </div>
+                        <div class="mt-auto">
+                            <a href="#all-properties" class="bg-blue-900 text-white py-2 px-4 rounded-lg w-full block text-center">View Homes</a>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="text-center mt-8">
-                <a href="javascript:void(0);" onclick="window.exploreAllResorts()" class="bg-blue-900 text-white py-2 px-6 rounded-lg inline-block">Explore All Resorts</a>
+                <a href="#" id="explore-all-resorts-btn" class="bg-blue-900 text-white py-2 px-6 rounded-lg inline-block">Explore All Resorts</a>
             </div>
         </div>
     </section>
@@ -480,7 +503,5 @@
     </div>
 
     <script src="script.js"></script>
-    <script src="navigation.js"></script>
-    <script src="properties.js"></script>
 </body>
 </html>

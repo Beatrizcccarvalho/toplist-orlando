@@ -56,7 +56,7 @@ header.scrolled {
 }
 
 .logo-link img {
-    border: none;
+    border: none !important;
 }
 
 .nav-link {
@@ -132,12 +132,22 @@ section:not(#home) {
 .search-bar-section {
     transition: all 0.3s ease;
     position: relative;
+    display: flex;
+    align-items: center;
+    height: 56px; /* Consistent height for all sections */
 }
 
 /* Override overflow for the main search bar container */
 #main-search-bar {
-    overflow: visible !important; 
+    overflow: visible !important;
     z-index: 10;
+    display: flex;
+    align-items: stretch;
+    border-radius: 0.5rem;
+}
+
+#main-search-bar .search-bar-section {
+    justify-content: space-between;
 }
 
 .resort-selector, .travel-dates {
@@ -152,6 +162,9 @@ section:not(#home) {
 
 .search-btn {
     background-color: var(--primary-red);
+    min-width: 100px;
+    justify-content: center;
+    flex-shrink: 0;
 }
 
 .resort-dropdown {
@@ -430,46 +443,355 @@ section:not(#home) {
     font-weight: 600;
 }
 
-/* Resorts Overlay Styles */
-#resorts-overlay {
-    animation: fadeIn 0.3s ease-in-out;
+/* Mobile adjustments */
+@media (max-width: 1024px) {
+    #main-search-bar {
+        flex-wrap: wrap;
+        border-radius: 0.5rem;
+    }
+
+    #main-search-bar .search-bar-section {
+        min-width: 33.333%;
+        border-bottom: 1px solid rgba(229, 231, 235, 0.5);
+    }
+
+    #main-search-bar .search-btn {
+        min-width: 100%;
+        border-bottom: none;
+    }
 }
 
-#resorts-overlay .bg-white {
-    animation: slideIn 0.3s ease-in-out;
+@media (max-width: 640px) {
+    #main-search-bar {
+        display: flex;
+        flex-direction: column;
+        border-radius: 0.5rem;
+    }
+
+    #main-search-bar .search-bar-section {
+        width: 100%;
+        min-width: 100%;
+        border-bottom: 1px solid var(--light-gray);
+    }
+
+    #main-search-bar .search-bar-section:last-child {
+        border-bottom: none;
+    }
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+/* Enhanced Mobile Responsiveness */
+@media (max-width: 768px) {
+    /* Header adjustments */
+    header .container {
+        flex-direction: column;
+        padding: 0.5rem;
+    }
+    
+    header nav {
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+        padding: 0.5rem 0;
+    }
+    
+    header .flex.space-x-2 {
+        width: 100%;
+        justify-content: center;
+        margin-top: 0.5rem;
+    }
+    
+    .nav-link {
+        padding: 0.5rem;
+        margin: 0 0.25rem;
+    }
+    
+    /* Home section adjustments */
+    #home {
+        min-height: 80vh;
+    }
+    
+    .hero-text {
+        font-size: 2rem !important;
+        line-height: 1.2;
+        text-align: center;
+        padding: 0 1rem;
+    }
+    
+    /* Property cards */
+    .grid.grid-cols-3, .grid.grid-cols-2 {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Service cards */
+    .service-card {
+        margin-bottom: 1.5rem;
+    }
+    
+    /* Carousel */
+    .flex.justify-center.gap-8 {
+        gap: 1rem !important;
+    }
+    
+    /* Footer */
+    footer .grid.grid-cols-4 {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+    }
+
+    /* Mobile Menu Button */
+    .mobile-menu-btn {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 30px;
+        height: 24px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        z-index: 20;
+        position: absolute;
+        top: 15px;
+        right: 15px;
+    }
+    
+    .mobile-menu-btn span {
+        width: 100%;
+        height: 3px;
+        background-color: var(--primary-blue);
+        border-radius: 2px;
+        transition: all 0.3s ease;
+    }
+    
+    .mobile-menu-btn.active span:nth-child(1) {
+        transform: translateY(10px) rotate(45deg);
+    }
+    
+    .mobile-menu-btn.active span:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .mobile-menu-btn.active span:nth-child(3) {
+        transform: translateY(-10px) rotate(-45deg);
+    }
+    
+    /* Mobile Navigation */
+    header nav.mobile-nav {
+        display: none;
+        width: 100%;
+        background-color: #ebf1fa;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        padding: 1rem 0;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        z-index: 19;
+    }
+    
+    header nav.mobile-nav.active {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    header nav.mobile-nav a {
+        width: 100%;
+        text-align: center;
+        padding: 0.75rem 0;
+        border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+    
+    /* Improved search section for mobile */
+    #main-search-bar .search-bar-section.active {
+        background-color: var(--darker-blue);
+        z-index: 15;
+    }
+    
+    #main-search-bar .search-bar-section.active .resort-dropdown,
+    #main-search-bar .search-bar-section.active .options-dropdown {
+        display: block;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        border-radius: 0 0 0.5rem 0.5rem;
+        max-height: 200px;
+        overflow-y: auto;
+        z-index: 16;
+    }
+
+    /* Make all interactive elements have larger touch targets */
+    button, 
+    .nav-link, 
+    .dropdown-toggle, 
+    [role="button"], 
+    a.bg-blue-900,
+    .whatsapp-btn {
+        min-height: 44px;
+        min-width: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.5rem 0.75rem;
+    }
+    
+    /* Improve carousel swipe experience */
+    .carousel {
+        -webkit-overflow-scrolling: touch;
+        scroll-behavior: smooth;
+        scroll-snap-type: x mandatory;
+    }
+    
+    .carousel > * {
+        scroll-snap-align: start;
+    }
+    
+    /* Better visual feedback for touch interactions */
+    button:active, 
+    .nav-link:active, 
+    [role="button"]:active,
+    a.bg-blue-900:active {
+        transform: scale(0.97);
+        opacity: 0.9;
+    }
+    
+    /* Add active states for better touch feedback */
+    .search-bar-section:active,
+    .dropdown-toggle:active,
+    .service-card:active {
+        opacity: 0.8;
+    }
+    
+    /* Improved form inputs for touch */
+    input, 
+    select, 
+    textarea {
+        font-size: 16px !important; /* Prevent iOS zoom */
+        padding: 12px !important;
+        height: auto !important;
+    }
+    
+    /* Add spacing between elements to prevent accidental taps */
+    .grid.grid-cols-1 > * {
+        margin-bottom: 1.5rem;
+    }
+    
+    /* Improved focus states for accessibility */
+    a:focus,
+    button:focus,
+    input:focus,
+    select:focus,
+    textarea:focus,
+    [role="button"]:focus {
+        outline: 2px solid var(--primary-blue);
+        outline-offset: 2px;
+    }
 }
 
-@keyframes slideIn {
-    from { transform: translateY(-50px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
+@media (max-width: 480px) {
+    /* Finer adjustments for smallest screens */
+    .hero-text {
+        font-size: 1.75rem !important;
+    }
+    
+    /* Make buttons larger for better touch targets */
+    button, .bg-blue-900, .whatsapp-btn {
+        min-height: 44px;
+    }
+    
+    /* Footer */
+    footer .grid.grid-cols-4 {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Search bar */
+    #main-search-bar .search-bar-section {
+        height: 64px;
+    }
+    
+    /* Service cards stack better */
+    .grid.grid-cols-2 {
+        gap: 1rem;
+    }
+
+    /* Smaller mobile menu positioning */
+    .mobile-menu-btn {
+        top: 10px;
+        right: 10px;
+    }
+    
+    /* Adjust header for mobile menu button */
+    header .container {
+        padding-top: 2.5rem;
+    }
 }
 
-#close-overlay {
-    cursor: pointer;
-    font-size: 28px;
-    line-height: 1;
-    height: 40px;
-    width: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 0.2s;
+/* Hide mobile menu on larger screens */
+@media (min-width: 769px) {
+    .mobile-menu-btn {
+        display: none;
+    }
+    
+    header nav.mobile-nav {
+        display: flex;
+        flex-direction: row;
+        position: static;
+        box-shadow: none;
+        background: transparent;
+        padding: 0;
+    }
 }
 
-#close-overlay:hover {
-    background-color: #f3f4f6;
+/* Tablet specific adjustments */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .grid.grid-cols-3 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    header .container {
+        padding: 0.75rem 1rem;
+    }
+    
+    #main-search-bar {
+        width: 90%;
+        margin: 0 auto;
+    }
 }
 
-.view-resort-homes {
-    transition: background-color 0.2s;
+/* Improved Video Handling for Mobile */
+@media (max-width: 768px) {
+    .video-background {
+        background-size: cover;
+        background-position: center center;
+    }
+    
+    /* Fallback background image for mobile if video fails to load */
+    .video-background.mobile-fallback {
+        background-image: url('../images/hero-image-fallback.jpg');
+    }
+    
+    /* Optimize video for mobile */
+    .fullscreen-video {
+        object-fit: cover;
+    }
+    
+    /* Fixed date picker positioning for mobile */
+    .flatpickr-calendar {
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        width: 90vw !important;
+        max-width: 300px !important;
+    }
 }
 
-.view-resort-homes:hover {
-    background-color: #1e3a8a;
+/* Accessibility Improvements */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+    }
 }

@@ -131,15 +131,19 @@ function setupDatePicker() {
         // Ensure the container can show overflow
         dateRangePickerContainer.style.overflow = 'visible';
 
+        // Check if we're on mobile
+        const isMobile = window.innerWidth < 768;
+
         // Initialize flatpickr date range picker
         const datePicker = flatpickr(dateRangePickerInput, {
             mode: 'range',
             minDate: 'today',
             dateFormat: 'Y-m-d',
-            position: 'below',
+            position: 'auto',
             allowInput: false,
-            static: false,
-            disableMobile: true,
+            static: true,
+            disableMobile: false, // Allow native mobile experience when needed
+            appendTo: isMobile ? document.body : undefined, // Append to body on mobile for better positioning
             onClose: function(selectedDates, dateStr) {
                 if (selectedDates.length > 0) {
                     const startDate = new Date(selectedDates[0]);
@@ -159,7 +163,15 @@ function setupDatePicker() {
                 const calendarElem = instance.calendarContainer;
                 if (calendarElem) {
                     calendarElem.style.zIndex = "9999";
-                    document.body.appendChild(calendarElem);
+                    // On mobile, append to body and center
+                    if (isMobile) {
+                        document.body.appendChild(calendarElem);
+                        calendarElem.style.position = "fixed";
+                        calendarElem.style.top = "50%";
+                        calendarElem.style.left = "50%";
+                        calendarElem.style.transform = "translate(-50%, -50%)";
+                        calendarElem.style.maxWidth = "90vw";
+                    }
                 }
             },
             onError: function(error) {
@@ -319,6 +331,66 @@ window.addEventListener('load', function() {
     }, 500);
 });
 
+// Handle responsive layout
+function handleResponsiveLayout() {
+    const isMobile = window.innerWidth < 768;
+    const isTablet = window.innerWidth >= 768 && window.innerWidth < 1024;
+    
+    // Get relevant elements
+    const mainSearchBar = document.getElementById('main-search-bar');
+    const navContainer = document.querySelector('header .container');
+    const headerButtons = document.querySelector('header .flex.space-x-2');
+    
+    // Apply responsive classes based on screen size
+    if (isMobile) {
+        // Ensure search bar is stacked vertically on mobile
+        if (mainSearchBar) {
+            mainSearchBar.style.flexDirection = 'column';
+            mainSearchBar.style.borderRadius = '1rem';
+            
+            // Make each section full width
+            const sections = mainSearchBar.querySelectorAll('.search-bar-section');
+            sections.forEach(section => {
+                section.style.width = '100%';
+            });
+        }
+        
+        // Make the header more compact
+        if (navContainer) {
+            navContainer.style.flexDirection = 'column';
+            navContainer.style.padding = '0.5rem';
+        }
+        
+        // Ensure buttons are visible
+        if (headerButtons) {
+            headerButtons.style.width = '100%';
+            headerButtons.style.justifyContent = 'center';
+            headerButtons.style.marginTop = '0.5rem';
+        }
+    } else {
+        // Reset styles for larger screens
+        if (mainSearchBar) {
+            mainSearchBar.style.flexDirection = 'row';
+            
+            const sections = mainSearchBar.querySelectorAll('.search-bar-section');
+            sections.forEach(section => {
+                section.style.width = '';
+            });
+        }
+        
+        if (navContainer) {
+            navContainer.style.flexDirection = isTablet ? 'column' : 'row';
+            navContainer.style.padding = '';
+        }
+        
+        if (headerButtons) {
+            headerButtons.style.width = isTablet ? '100%' : '';
+            headerButtons.style.justifyContent = isTablet ? 'center' : '';
+            headerButtons.style.marginTop = isTablet ? '0.5rem' : '';
+        }
+    }
+}
+
 // Main initialization
 document.addEventListener('DOMContentLoaded', function() {
     console.log('DOM fully loaded - initializing components');
@@ -404,4 +476,12 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Setup complimentary extras carousel
     setupExtrasCarousel();
+
+    // Handle responsive layout
+    handleResponsiveLayout();
+});
+
+// Add resize event listener
+window.addEventListener('resize', function() {
+    handleResponsiveLayout();
 });
