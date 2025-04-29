@@ -15,34 +15,58 @@ function Services() {
     message: '',
   });
 
+  // State for popup
+  const [showMoreServices, setShowMoreServices] = useState(false);
+
   // Categories for filtering
   const categories = [
     { id: 'all', label: 'All Services' },
     { id: 'amenities', label: 'Amenities' },
     { id: 'equipment', label: 'Equipment Rental' },
     { id: 'celebration', label: 'Celebration' },
+    { id: 'additional', label: 'Additional Services' },
   ];
 
   const services = [
     {
-      title: "Have a BBQ with your family and friends during your stay.",
-      video: "/images/services/BBQ.mp4",
+      title: "BBQ",
+      description: "Have a BBQ with your family and friends during your stay.",
+      image: "/images/carousel/background-video.mp4", // Using placeholder, update with actual BBQ image
       category: "amenities"
     },
     {
-      title: "Keep your private pool at a comfortable temperature throughout your stay.",
-      video: "/images/services/BBQ.mp4",
+      title: "Pool Heat",
+      description: "Keep your private pool at a comfortable temperature throughout your stay.",
+      image: "/images/carousel/background-video.mp4", // Using placeholder, update with actual pool image
       category: "amenities"
     },
     {
-      title: "Travel lighter with our baby equipment rental: cribs, high chairs, strollers, and more.",
-      video: "/images/services/BBQ.mp4",
+      title: "Baby Items",
+      description: "Travel lighter with our baby equipment rental: cribs, high chairs, strollers, and more.",
+      image: "/images/carousel/background-video.mp4", // Using placeholder, update with actual baby items image
       category: "equipment"
     },
     {
-      title: "Make your special occasion memorable with our celebration packages including decorations, cakes, and more.",
-      video: "/images/services/BBQ.mp4",
+      title: "Celebration",
+      description: "Make your special occasion memorable with our celebration packages including decorations, cakes, and more.",
+      image: "/images/carousel/background-video.mp4", // Using placeholder, update with actual celebration image
       category: "celebration"
+    }
+  ];
+
+  // Additional services shown in popup
+  const additionalServices = [
+    {
+      title: "Mid-Clean",
+      description: "Keep your vacation home spotless with our mid-stay cleaning service.",
+      image: "/images/carousel/background-video.mp4", // Using placeholder, update with actual mid-clean image
+      category: "additional"
+    },
+    {
+      title: "Additional Linen Delivery",
+      description: "Extra fresh linens delivered to your door whenever you need them.",
+      image: "/images/carousel/background-video.mp4", // Using placeholder, update with actual linen image
+      category: "additional"
     }
   ];
 
@@ -73,7 +97,8 @@ function Services() {
   // Filter services based on category and search query
   const filteredServices = services.filter(service => {
     const matchesCategory = selectedCategory === 'all' || service.category === selectedCategory;
-    const matchesSearch = service.title.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesSearch = service.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                          service.description.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesCategory && matchesSearch;
   });
 
@@ -106,7 +131,7 @@ function Services() {
       {/* Filter Section */}
       <div className="container mx-auto px-4 py-6">
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 mb-8">
-          <div className="flex gap-4">
+          <div className="flex flex-wrap gap-4">
             {categories.map(category => (
               <button
                 key={category.id}
@@ -133,24 +158,93 @@ function Services() {
         </div>
       </div>
 
-      {/* Services Cards with Tooltips */}
+      {/* Services Cards */}
       <div className="container mx-auto px-4 py-8">
-        <h1 className="text-3xl font-bold text-center text-gray-800 mb-12">Our Services</h1>
+        <h1 className="text-3xl font-bold text-center text-gray-800 mb-12">Our Add-ons</h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {filteredServices.map((service, index) => (
-            <div key={index} className="bg-white rounded-lg shadow-lg overflow-hidden relative h-64">
-              <div className="p-4 absolute top-0 left-0 right-0 z-20 bg-white bg-opacity-90">
-                <h3 className="font-bold text-lg mb-0">{service.title}</h3>
+            <div key={index} className="bg-white rounded-lg shadow-lg overflow-hidden relative h-80">
+              <div className="h-48 overflow-hidden">
+                {service.image.endsWith('.mp4') ? (
+                  <video autoPlay muted loop playsInline className="w-full h-full object-cover">
+                    <source src={service.image} type="video/mp4" />
+                  </video>
+                ) : (
+                  <img src={service.image} alt={service.title} className="w-full h-full object-cover" />
+                )}
               </div>
-              <div className="absolute inset-0 z-10">
-                <video autoPlay muted loop playsInline className="w-full h-full object-cover">
-                  <source src={service.video} type="video/mp4" />
-                </video>
+              <div className="p-4">
+                <h3 className="font-bold text-lg mb-2">{service.title}</h3>
+                <p className="text-gray-700 text-sm">{service.description}</p>
               </div>
             </div>
           ))}
+          
+          {/* See More Button */}
+          <div 
+            className="bg-white rounded-lg shadow-lg overflow-hidden relative h-80 flex items-center justify-center cursor-pointer hover:bg-gray-50"
+            onClick={() => setShowMoreServices(true)}
+          >
+            <div className="text-center p-4">
+              <div className="w-16 h-16 mx-auto bg-blue-700 rounded-full flex items-center justify-center mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-8 h-8 text-white">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                </svg>
+              </div>
+              <h3 className="font-bold text-lg mb-2">See More Services</h3>
+              <p className="text-gray-700 text-sm">Click to view additional services we offer</p>
+            </div>
+          </div>
         </div>
       </div>
+
+      {/* Additional Services Popup */}
+      {showMoreServices && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-90vh overflow-y-auto">
+            <div className="flex justify-between items-center p-6 border-b">
+              <h2 className="text-2xl font-bold text-gray-800">Additional Services</h2>
+              <button 
+                onClick={() => setShowMoreServices(false)}
+                className="text-gray-500 hover:text-gray-700"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+            <div className="p-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {additionalServices.map((service, index) => (
+                  <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div className="h-48 overflow-hidden">
+                      {service.image.endsWith('.mp4') ? (
+                        <video autoPlay muted loop playsInline className="w-full h-full object-cover">
+                          <source src={service.image} type="video/mp4" />
+                        </video>
+                      ) : (
+                        <img src={service.image} alt={service.title} className="w-full h-full object-cover" />
+                      )}
+                    </div>
+                    <div className="p-4">
+                      <h3 className="font-bold text-lg mb-2">{service.title}</h3>
+                      <p className="text-gray-700">{service.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="p-6 border-t bg-gray-50 flex justify-end">
+              <button 
+                onClick={() => setShowMoreServices(false)}
+                className="px-6 py-2 bg-blue-700 text-white rounded-lg hover:bg-blue-800 transition"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Service Request Form */}
       <div className="container mx-auto px-4 py-12 bg-white rounded-lg shadow-md my-12">
@@ -205,8 +299,10 @@ function Services() {
                 <option value="">Select a service</option>
                 <option value="bbq">BBQ</option>
                 <option value="pool">Pool Heating</option>
-                <option value="equipment">Equipment Rental</option>
+                <option value="baby">Baby Items</option>
                 <option value="celebration">Celebration Package</option>
+                <option value="midclean">Mid-Clean</option>
+                <option value="linen">Additional Linen Delivery</option>
               </select>
             </div>
             <div className="md:col-span-2">
