@@ -2,10 +2,6 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 function Services() {
-  // State for filters
-  const [selectedCategory, setSelectedCategory] = useState('all');
-  const [searchQuery, setSearchQuery] = useState('');
-  
   // State for contact form
   const [formData, setFormData] = useState({
     name: '',
@@ -17,15 +13,6 @@ function Services() {
 
   // State for popup
   const [showMoreServices, setShowMoreServices] = useState(false);
-
-  // Categories for filtering
-  const categories = [
-    { id: 'all', label: 'All Services' },
-    { id: 'amenities', label: 'Amenities' },
-    { id: 'equipment', label: 'Equipment Rental' },
-    { id: 'celebration', label: 'Celebration' },
-    { id: 'additional', label: 'Additional Services' },
-  ];
 
   const services = [
     {
@@ -59,48 +46,16 @@ function Services() {
     {
       title: "Mid-Clean",
       description: "Keep your vacation home spotless with our mid-stay cleaning service.",
-      image: "/images/carousel/background-video.mp4", // Keeping placeholder since there's no specific video in AddsOn folder
+      image: "/AddsOn/Mid-Clean.mp4",
       category: "additional"
     },
     {
       title: "Additional Linen Delivery",
       description: "Extra fresh linens delivered to your door whenever you need them.",
-      image: "/images/carousel/background-video.mp4", // Keeping placeholder since there's no specific video in AddsOn folder
+      image: "/AddsOn/Additional Linen Delivery.mp4",
       category: "additional"
     }
   ];
-
-  const managementServices = [
-    {
-      title: "OCCUPANCY",
-      description: "Strive for top-tier performance by maintaining occupancy rates above 80%",
-      icon: (
-        <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V9h14v10zM5 7V5h14v2H5zm2 4h10v2H7v-2zm0 4h7v2H7v-2z" />
-      )
-    },
-    {
-      title: "PERFORMANCE",
-      description: "Maximize your property's earning potential with our data-driven performance optimization strategies.",
-      icon: (
-        <path d="M3.5 18.49l6-6.01 4 4L22 6.92l-1.41-1.41-7.09 7.97-4-4L2 16.99l1.5 1.5z" />
-      )
-    },
-    {
-      title: "HOME CARE",
-      description: "Professional property maintenance and enhanced cleaning protocols to keep your property in pristine condition.",
-      icon: (
-        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
-      )
-    }
-  ];
-
-  // Filter services based on category and search query
-  const filteredServices = services.filter(service => {
-    const matchesCategory = selectedCategory === 'all' || service.category === selectedCategory;
-    const matchesSearch = service.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                          service.description.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchesCategory && matchesSearch;
-  });
 
   // Handle form input changes
   const handleInputChange = (e) => {
@@ -128,41 +83,11 @@ function Services() {
 
   return (
     <div className="pt-16">
-      {/* Filter Section */}
-      <div className="container mx-auto px-4 py-6">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-4 mb-8">
-          <div className="flex flex-wrap gap-4">
-            {categories.map(category => (
-              <button
-                key={category.id}
-                onClick={() => setSelectedCategory(category.id)}
-                className={`px-4 py-2 rounded-lg ${
-                  selectedCategory === category.id
-                    ? 'bg-blue-700 text-white'
-                    : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-                }`}
-              >
-                {category.label}
-              </button>
-            ))}
-          </div>
-          <div className="w-full md:w-auto">
-            <input
-              type="text"
-              placeholder="Search services..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full md:w-64 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
-        </div>
-      </div>
-
       {/* Services Cards */}
       <div className="container mx-auto px-4 py-8">
         <h1 className="text-3xl font-bold text-center text-gray-800 mb-12">Our Add-ons</h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {filteredServices.map((service, index) => (
+          {services.map((service, index) => (
             <div key={index} className="bg-white rounded-lg shadow-lg overflow-hidden relative h-auto">
               <div className="h-48 overflow-hidden">
                 {service.image.endsWith('.mp4') ? (
@@ -203,7 +128,7 @@ function Services() {
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-90vh overflow-y-auto">
             <div className="flex justify-between items-center p-6 border-b">
-              <h2 className="text-2xl font-bold text-gray-800">Additional Services</h2>
+              <h2 className="text-2xl font-bold text-gray-800">Additional Add-ons</h2>
               <button 
                 onClick={() => setShowMoreServices(false)}
                 className="text-gray-500 hover:text-gray-700"
@@ -341,27 +266,6 @@ function Services() {
           <Link to="/contact" className="inline-block bg-blue-700 text-white py-3 px-8 rounded-lg font-semibold hover:bg-blue-800 transition">
             Contact Us for More Information
           </Link>
-        </div>
-      </div>
-
-      {/* Property Management Services Section */}
-      <div className="container mx-auto px-4 py-12 bg-white rounded-lg shadow-md my-12">
-        <h2 className="text-3xl font-bold text-center text-gray-800 mb-12">Property Management Services</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {managementServices.map((service, index) => (
-            <div key={index} className="rounded-lg overflow-hidden shadow-lg h-full">
-              <div className="bg-blue-100 p-8 flex flex-col items-center justify-center">
-                <svg className="w-12 h-12 text-blue-700 mb-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                  {service.icon}
-                </svg>
-                <h3 className="text-blue-900 text-lg font-bold uppercase">{service.title}</h3>
-              </div>
-              <div className="bg-blue-700 p-6">
-                <h3 className="text-white text-xl font-bold mb-4">{service.title}</h3>
-                <p className="text-white">{service.description}</p>
-              </div>
-            </div>
-          ))}
         </div>
       </div>
 
