@@ -233,7 +233,7 @@ function Home() {
             <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
               <div className="h-48 overflow-hidden">
                 <video autoPlay muted loop playsInline className="w-full h-full object-cover">
-                  <source src="/images/carousel/background-video.mp4" type="video/mp4" />
+                  <source src="/AddsOn/BBQ.mp4" type="video/mp4" />
                 </video>
               </div>
               <div className="p-4">
@@ -248,7 +248,7 @@ function Home() {
             <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
               <div className="h-48 overflow-hidden">
                 <video autoPlay muted loop playsInline className="w-full h-full object-cover">
-                  <source src="/images/carousel/background-video.mp4" type="video/mp4" />
+                  <source src="/AddsOn/Pool heat.mp4" type="video/mp4" />
                 </video>
               </div>
               <div className="p-4">
@@ -263,7 +263,7 @@ function Home() {
             <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
               <div className="h-48 overflow-hidden">
                 <video autoPlay muted loop playsInline className="w-full h-full object-cover">
-                  <source src="/images/carousel/background-video.mp4" type="video/mp4" />
+                  <source src="/AddsOn/Baby Items.mp4" type="video/mp4" />
                 </video>
               </div>
               <div className="p-4">
@@ -278,13 +278,13 @@ function Home() {
             <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
               <div className="h-48 overflow-hidden">
                 <video autoPlay muted loop playsInline className="w-full h-full object-cover">
-                  <source src="/images/carousel/background-video.mp4" type="video/mp4" />
+                  <source src="/AddsOn/Celebration.mp4" type="video/mp4" />
                 </video>
               </div>
               <div className="p-4">
-                <h3 className="font-bold text-lg mb-2">Celebration</h3>
-                <p className="text-gray-600">
-                  Make your special occasion memorable with our celebration packages.
+                <h3 className="font-bold text-lg mb-1">Celebration</h3>
+                <p className="text-gray-600 text-sm">
+                  Make your special occasion memorable with our celebration packages including decorations, cakes, and more.
                 </p>
               </div>
             </div>

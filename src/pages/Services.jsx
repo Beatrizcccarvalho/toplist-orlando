@@ -31,25 +31,25 @@ function Services() {
     {
       title: "BBQ",
       description: "Have a BBQ with your family and friends during your stay.",
-      image: "/images/carousel/background-video.mp4", // Using placeholder, update with actual BBQ image
+      image: "/AddsOn/BBQ.mp4",
       category: "amenities"
     },
     {
       title: "Pool Heat",
       description: "Keep your private pool at a comfortable temperature throughout your stay.",
-      image: "/images/carousel/background-video.mp4", // Using placeholder, update with actual pool image
+      image: "/AddsOn/Pool heat.mp4",
       category: "amenities"
     },
     {
       title: "Baby Items",
       description: "Travel lighter with our baby equipment rental: cribs, high chairs, strollers, and more.",
-      image: "/images/carousel/background-video.mp4", // Using placeholder, update with actual baby items image
+      image: "/AddsOn/Baby Items.mp4",
       category: "equipment"
     },
     {
       title: "Celebration",
       description: "Make your special occasion memorable with our celebration packages including decorations, cakes, and more.",
-      image: "/images/carousel/background-video.mp4", // Using placeholder, update with actual celebration image
+      image: "/AddsOn/Celebration.mp4",
       category: "celebration"
     }
   ];
@@ -59,13 +59,13 @@ function Services() {
     {
       title: "Mid-Clean",
       description: "Keep your vacation home spotless with our mid-stay cleaning service.",
-      image: "/images/carousel/background-video.mp4", // Using placeholder, update with actual mid-clean image
+      image: "/images/carousel/background-video.mp4", // Keeping placeholder since there's no specific video in AddsOn folder
       category: "additional"
     },
     {
       title: "Additional Linen Delivery",
       description: "Extra fresh linens delivered to your door whenever you need them.",
-      image: "/images/carousel/background-video.mp4", // Using placeholder, update with actual linen image
+      image: "/images/carousel/background-video.mp4", // Keeping placeholder since there's no specific video in AddsOn folder
       category: "additional"
     }
   ];
@@ -163,7 +163,7 @@ function Services() {
         <h1 className="text-3xl font-bold text-center text-gray-800 mb-12">Our Add-ons</h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {filteredServices.map((service, index) => (
-            <div key={index} className="bg-white rounded-lg shadow-lg overflow-hidden relative h-80">
+            <div key={index} className="bg-white rounded-lg shadow-lg overflow-hidden relative h-auto">
               <div className="h-48 overflow-hidden">
                 {service.image.endsWith('.mp4') ? (
                   <video autoPlay muted loop playsInline className="w-full h-full object-cover">
@@ -174,7 +174,7 @@ function Services() {
                 )}
               </div>
               <div className="p-4">
-                <h3 className="font-bold text-lg mb-2">{service.title}</h3>
+                <h3 className="font-bold text-lg mb-1">{service.title}</h3>
                 <p className="text-gray-700 text-sm">{service.description}</p>
               </div>
             </div>
@@ -191,8 +191,8 @@ function Services() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                 </svg>
               </div>
-              <h3 className="font-bold text-lg mb-2">See More Services</h3>
-              <p className="text-gray-700 text-sm">Click to view additional services we offer</p>
+              <h3 className="font-bold text-lg mb-2">See More Add-ons</h3>
+              <p className="text-gray-700 text-sm">Click to view additional add-ons we offer</p>
             </div>
           </div>
         </div>
@@ -227,8 +227,8 @@ function Services() {
                       )}
                     </div>
                     <div className="p-4">
-                      <h3 className="font-bold text-lg mb-2">{service.title}</h3>
-                      <p className="text-gray-700">{service.description}</p>
+                      <h3 className="font-bold text-lg mb-1">{service.title}</h3>
+                      <p className="text-gray-700 text-sm">{service.description}</p>
                     </div>
                   </div>
                 ))}
@@ -248,7 +248,7 @@ function Services() {
 
       {/* Service Request Form */}
       <div className="container mx-auto px-4 py-12 bg-white rounded-lg shadow-md my-12">
-        <h2 className="text-2xl font-bold text-center text-gray-800 mb-8">Request a Service</h2>
+        <h2 className="text-2xl font-bold text-center text-gray-800 mb-8">Request an Add-on</h2>
         <form onSubmit={handleSubmit} className="max-w-2xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
@@ -287,7 +287,7 @@ function Services() {
               />
             </div>
             <div>
-              <label htmlFor="serviceType" className="block text-gray-700 mb-2">Service Type</label>
+              <label htmlFor="serviceType" className="block text-gray-700 mb-2">Add-on Type</label>
               <select
                 id="serviceType"
                 name="serviceType"
@@ -296,7 +296,7 @@ function Services() {
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 required
               >
-                <option value="">Select a service</option>
+                <option value="">Select an add-on</option>
                 <option value="bbq">BBQ</option>
                 <option value="pool">Pool Heating</option>
                 <option value="baby">Baby Items</option>
@@ -334,7 +334,7 @@ function Services() {
         <h2 className="text-2xl font-bold text-center text-gray-800 mb-8">Enhance Your Stay</h2>
         <p className="text-gray-600 text-center max-w-3xl mx-auto mb-8">
           At Toplist Vacations, we understand that the little details make a big difference in your vacation experience. 
-          Our array of additional services is designed to make your stay as comfortable and enjoyable as possible. 
+          Our array of additional add-ons is designed to make your stay as comfortable and enjoyable as possible. 
           From heating your private pool to providing essential baby equipment, we've got everything covered.
         </p>
         <div className="text-center">
