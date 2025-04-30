@@ -227,44 +227,71 @@ function Home() {
       {/* Services Section */}
       <section id="services" className="bg-white py-16">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-semibold mb-10 text-center">Our Services</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Service Card 1 */}
-            <div className="bg-gray-100 rounded-lg p-8 text-center shadow-md hover:shadow-lg transition-shadow">
-              <div className="text-blue-600 text-5xl mb-4">
-                <i className="fas fa-home"></i>
+          <h2 className="text-3xl font-semibold mb-10 text-center">Our Add-ons</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
+            {/* Add-on Card 1 - BBQ */}
+            <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
+              <div className="h-48 overflow-hidden">
+                <video autoPlay muted loop playsInline className="w-full h-full object-cover">
+                  <source src="/images/carousel/background-video.mp4" type="video/mp4" />
+                </video>
               </div>
-              <h3 className="text-xl font-semibold mb-4">Vacation Rentals</h3>
-              <p className="text-gray-600">
-                Browse our selection of luxury vacation homes in the most desirable Orlando resort communities.
-              </p>
+              <div className="p-4">
+                <h3 className="font-bold text-lg mb-2">BBQ</h3>
+                <p className="text-gray-600">
+                  Have a BBQ with your family and friends during your stay.
+                </p>
+              </div>
             </div>
             
-            {/* Service Card 2 */}
-            <div className="bg-gray-100 rounded-lg p-8 text-center shadow-md hover:shadow-lg transition-shadow">
-              <div className="text-blue-600 text-5xl mb-4">
-                <i className="fas fa-building"></i>
+            {/* Add-on Card 2 - Pool Heat */}
+            <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
+              <div className="h-48 overflow-hidden">
+                <video autoPlay muted loop playsInline className="w-full h-full object-cover">
+                  <source src="/images/carousel/background-video.mp4" type="video/mp4" />
+                </video>
               </div>
-              <h3 className="text-xl font-semibold mb-4">Property Management</h3>
-              <p className="text-gray-600">
-                Let us handle the management of your vacation property for maximum returns and guest satisfaction.
-              </p>
+              <div className="p-4">
+                <h3 className="font-bold text-lg mb-2">Pool Heat</h3>
+                <p className="text-gray-600">
+                  Keep your private pool at a comfortable temperature throughout your stay.
+                </p>
+              </div>
             </div>
             
-            {/* Service Card 3 */}
-            <div className="bg-gray-100 rounded-lg p-8 text-center shadow-md hover:shadow-lg transition-shadow">
-              <div className="text-blue-600 text-5xl mb-4">
-                <i className="fas fa-concierge-bell"></i>
+            {/* Add-on Card 3 - Baby Items */}
+            <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
+              <div className="h-48 overflow-hidden">
+                <video autoPlay muted loop playsInline className="w-full h-full object-cover">
+                  <source src="/images/carousel/background-video.mp4" type="video/mp4" />
+                </video>
               </div>
-              <h3 className="text-xl font-semibold mb-4">Concierge Services</h3>
-              <p className="text-gray-600">
-                Enhance your stay with our premium concierge services, from park tickets to private chef experiences.
-              </p>
+              <div className="p-4">
+                <h3 className="font-bold text-lg mb-2">Baby Items</h3>
+                <p className="text-gray-600">
+                  Travel lighter with our baby equipment rental: cribs, high chairs, strollers, and more.
+                </p>
+              </div>
+            </div>
+
+            {/* Add-on Card 4 - Celebration */}
+            <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
+              <div className="h-48 overflow-hidden">
+                <video autoPlay muted loop playsInline className="w-full h-full object-cover">
+                  <source src="/images/carousel/background-video.mp4" type="video/mp4" />
+                </video>
+              </div>
+              <div className="p-4">
+                <h3 className="font-bold text-lg mb-2">Celebration</h3>
+                <p className="text-gray-600">
+                  Make your special occasion memorable with our celebration packages.
+                </p>
+              </div>
             </div>
           </div>
           <div className="text-center mt-8">
             <Link to="/services" className="bg-blue-600 text-white py-2 px-6 rounded-lg inline-block hover:bg-blue-700 transition-colors">
-              View All Services
+              View All Add-ons
             </Link>
           </div>
         </div>

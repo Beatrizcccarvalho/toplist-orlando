@@ -70,7 +70,7 @@ function Navbar() {
                   onClick={() => scrollToSection('services')}
                   className={`inline-flex items-center px-1 pt-1 text-sm font-medium ${scrolled ? 'text-gray-500' : 'text-white'} hover:text-blue-600`}
                 >
-                  Services
+                  Add-ons
                 </button>
                 <button 
                   onClick={() => scrollToSection('resorts')}
@@ -99,7 +99,7 @@ function Navbar() {
                     ? 'text-blue-600 border-b-2 border-blue-600' 
                     : `${scrolled ? 'text-gray-500' : 'text-white'} hover:text-blue-600`}`}
                 >
-                  Services
+                  Add-ons
                 </Link>
                 <Link 
                   to="/resorts" 
@@ -182,7 +182,7 @@ function Navbar() {
                   className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100 w-full text-left"
                   onClick={() => scrollToSection('services')}
                 >
-                  Services
+                  Add-ons
                 </button>
                 <button
                   className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100 w-full text-left"
@@ -210,7 +210,7 @@ function Navbar() {
                   className={`block px-3 py-2 rounded-md text-base font-medium ${isActive('/services') ? 'bg-blue-100 text-blue-600' : 'text-gray-700 hover:bg-gray-100'}`}
                   onClick={() => setIsOpen(false)}
                 >
-                  Services
+                  Add-ons
                 </Link>
                 <Link
                   to="/resorts"
