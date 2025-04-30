@@ -49,7 +49,7 @@ function Navbar() {
         <div className="flex justify-between h-16">
           <div className="flex items-center">
             <Link to="/" className="flex-shrink-0 flex items-center">
-              <img className="h-10 w-auto" src="/images/logo.png" alt="Toplist Orlando" />
+              <img className="h-12 w-auto" src="/TopList logo 2.png" alt="Toplist Orlando" />
             </Link>
           </div>
           
