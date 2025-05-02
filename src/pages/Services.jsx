@@ -46,13 +46,13 @@ function Services() {
     {
       title: "Mid-Clean",
       description: "Keep your vacation home spotless with our mid-stay cleaning service.",
-      image: "/AddsOn/Mid-Clean.mp4",
+      image: "/AddsOn/Mid-Clean 2.mp4",
       category: "additional"
     },
     {
       title: "Additional Linen Delivery",
       description: "Extra fresh linens delivered to your door whenever you need them.",
-      image: "/AddsOn/Additional Linen Delivery.mp4",
+      image: "/AddsOn/Additional Linen Delivery 2.mp4",
       category: "additional"
     }
   ];
@@ -141,7 +141,7 @@ function Services() {
             <div className="p-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {additionalServices.map((service, index) => (
-                  <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden">
+                  <div key={index} className="bg-white rounded-lg shadow-lg overflow-hidden relative h-auto">
                     <div className="h-48 overflow-hidden">
                       {service.image.endsWith('.mp4') ? (
                         <video autoPlay muted loop playsInline className="w-full h-full object-cover">

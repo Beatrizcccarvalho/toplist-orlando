@@ -53,7 +53,7 @@ function Navbar() {
   return (
     <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-lg' : 'bg-transparent'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16">
+        <div className="flex justify-between h-20">
           <div className="flex items-center">
             <div 
               onClick={handleLogoClick} 
@@ -70,7 +70,7 @@ function Navbar() {
             <Link 
               to="/"
               onClick={() => scrollToSection('home')}
-              className={`inline-flex items-center px-1 pt-1 text-sm font-medium ${isActive('/') 
+              className={`inline-flex items-center px-1 pt-3 pb-2 text-sm font-medium ${isActive('/') 
                 ? 'text-blue-600 border-b-2 border-blue-600' 
                 : `${scrolled ? 'text-gray-500' : 'text-white'} hover:text-blue-600`}`}
             >
@@ -80,25 +80,25 @@ function Navbar() {
               <>
                 <button 
                   onClick={() => scrollToSection('services')}
-                  className={`inline-flex items-center px-1 pt-1 text-sm font-medium ${scrolled ? 'text-gray-500' : 'text-white'} hover:text-blue-600`}
+                  className={`inline-flex items-center px-1 pt-3 pb-2 text-sm font-medium ${scrolled ? 'text-gray-500' : 'text-white'} hover:text-blue-600`}
                 >
                   Add-ons
                 </button>
                 <button 
                   onClick={() => scrollToSection('resorts')}
-                  className={`inline-flex items-center px-1 pt-1 text-sm font-medium ${scrolled ? 'text-gray-500' : 'text-white'} hover:text-blue-600`}
+                  className={`inline-flex items-center px-1 pt-3 pb-2 text-sm font-medium ${scrolled ? 'text-gray-500' : 'text-white'} hover:text-blue-600`}
                 >
                   Resorts
                 </button>
                 <button 
                   onClick={() => scrollToSection('management')}
-                  className={`inline-flex items-center px-1 pt-1 text-sm font-medium ${scrolled ? 'text-gray-500' : 'text-white'} hover:text-blue-600`}
+                  className={`inline-flex items-center px-1 pt-3 pb-2 text-sm font-medium ${scrolled ? 'text-gray-500' : 'text-white'} hover:text-blue-600`}
                 >
                   Management
                 </button>
                 <button 
                   onClick={() => scrollToSection('contact')}
-                  className={`inline-flex items-center px-1 pt-1 text-sm font-medium ${scrolled ? 'text-gray-500' : 'text-white'} hover:text-blue-600`}
+                  className={`inline-flex items-center px-1 pt-3 pb-2 text-sm font-medium ${scrolled ? 'text-gray-500' : 'text-white'} hover:text-blue-600`}
                 >
                   Contact
                 </button>
@@ -107,7 +107,7 @@ function Navbar() {
               <>
                 <Link 
                   to="/services" 
-                  className={`inline-flex items-center px-1 pt-1 text-sm font-medium ${isActive('/services') 
+                  className={`inline-flex items-center px-1 pt-3 pb-2 text-sm font-medium ${isActive('/services') 
                     ? 'text-blue-600 border-b-2 border-blue-600' 
                     : `${scrolled ? 'text-gray-500' : 'text-white'} hover:text-blue-600`}`}
                 >
@@ -115,7 +115,7 @@ function Navbar() {
                 </Link>
                 <Link 
                   to="/resorts" 
-                  className={`inline-flex items-center px-1 pt-1 text-sm font-medium ${isActive('/resorts') 
+                  className={`inline-flex items-center px-1 pt-3 pb-2 text-sm font-medium ${isActive('/resorts') 
                     ? 'text-blue-600 border-b-2 border-blue-600' 
                     : `${scrolled ? 'text-gray-500' : 'text-white'} hover:text-blue-600`}`}
                 >
@@ -123,7 +123,7 @@ function Navbar() {
                 </Link>
                 <Link 
                   to="/management" 
-                  className={`inline-flex items-center px-1 pt-1 text-sm font-medium ${isActive('/management') 
+                  className={`inline-flex items-center px-1 pt-3 pb-2 text-sm font-medium ${isActive('/management') 
                     ? 'text-blue-600 border-b-2 border-blue-600' 
                     : `${scrolled ? 'text-gray-500' : 'text-white'} hover:text-blue-600`}`}
                 >
@@ -131,7 +131,7 @@ function Navbar() {
                 </Link>
                 <Link 
                   to="/contact" 
-                  className={`inline-flex items-center px-1 pt-1 text-sm font-medium ${isActive('/contact') 
+                  className={`inline-flex items-center px-1 pt-3 pb-2 text-sm font-medium ${isActive('/contact') 
                     ? 'text-blue-600 border-b-2 border-blue-600' 
                     : `${scrolled ? 'text-gray-500' : 'text-white'} hover:text-blue-600`}`}
                 >
@@ -142,14 +142,14 @@ function Navbar() {
             <div className="flex space-x-2">
               <Link 
                 to="/guest" 
-                className={`inline-flex items-center px-3 py-1.5 border border-transparent text-sm font-medium rounded-md 
+                className={`inline-flex items-center px-3 py-2 mt-1 border border-transparent text-sm font-medium rounded-md 
                   ${isActive('/guest') ? 'bg-blue-700 text-white' : 'text-white bg-blue-600 hover:bg-blue-700'}`}
               >
                 Guest
               </Link>
               <Link 
                 to="/admin-login" 
-                className="inline-flex items-center px-3 py-1.5 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700"
+                className="inline-flex items-center px-3 py-2 mt-1 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700"
               >
                 Admin
               </Link>

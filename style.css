@@ -21,6 +21,10 @@ html, body {
     scroll-behavior: smooth;
 }
 
+body {
+    padding-top: 60px; /* Add padding for fixed header */
+}
+
 /* Adjusted for fixed header - add padding to the top */
 #home {
     min-height: 100vh;
@@ -33,15 +37,52 @@ html, body {
 
 /* Header Styles */
 header {
-    background-color: #ebf1fa;
+    background-color: rgba(255, 255, 255, 0.9);
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     transition: background-color 0.3s ease;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 100;
 }
 
 /* Add this for semi-transparent header on scroll */
 header.scrolled {
-    background-color: rgba(235, 241, 250, 0.9);
+    background-color: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(5px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+/* Add padding to content after header */
+.container:first-of-type {
+    padding-top: 0;
+}
+
+/* Page title styling for section pages */
+.page-title {
+    padding-top: 20px;
+    padding-bottom: 10px;
+    margin-bottom: 0;
+}
+
+/* Property details title styling */
+.property-title-container {
+    padding-top: 80px;
+    margin-bottom: 20px;
+}
+
+.property-title-container h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #1a202c;
+}
+
+.property-address {
+    font-size: 1.2rem;
+    color: #4a5568;
+    margin-top: 0.5rem;
 }
 
 .logo-link {
@@ -116,7 +157,7 @@ header.scrolled {
 section {
     position: relative;
     z-index: 1;
-    padding-top: 80px; /* Add padding for fixed header */
+    padding-top: 100px; /* Add padding for fixed header */
     margin-top: -20px; /* Adjust to prevent gaps */
 }
 
