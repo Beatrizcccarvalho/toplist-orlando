@@ -94,7 +94,7 @@ section.hero-section {
 
 /* Section styling */
 section {
-  scroll-margin-top: 80px; /* Ensures that section targets account for fixed header */
+  scroll-margin-top: 112px; /* Increased from 80px to match pt-28 (7rem = 112px) */
 }
 
 /* Responsive Adjustments */

@@ -56,7 +56,7 @@ function Home() {
   return (
     <div className="bg-gray-100 font-sans">
       {/* Home Section with Full Video Background */}
-      <section id="home" className="relative min-h-screen pt-16 hero-section">
+      <section id="home" className="relative min-h-screen pt-28 hero-section">
         {/* Video Background */}
         <div className="video-background">
           <video autoPlay muted loop playsInline className="fullscreen-video">
